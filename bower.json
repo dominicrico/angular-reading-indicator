@@ -1,0 +1,33 @@
+{
+  "name": "angular-reading-indicator",
+  "version": "1.0.0",
+  "authors": [
+    "Dominic Rico-Gomez <hello@coderocket.me>"
+  ],
+  "description": "AngularJS Reading Indicator",
+  "main": "ng-reading-indicator.js",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "reading",
+    "indicator",
+    "progress",
+    "progressbar"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dominicrico/angular-reading-indicator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominicrico/angular-reading-indicator.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.2"
+  }
+}
