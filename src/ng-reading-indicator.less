@@ -1,0 +1,126 @@
+// Color variables
+@fontColor: #fff;
+@baseColor: #1392B0;
+
+
+// Basic reading indicator
+.ng-reading-indicator {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 0;
+  transition: height 0.15s ease-out;
+  top: 0;
+  left: 0;
+  background: fade(@baseColor, 80%);
+  box-shadow: 2px 2px 2px fade(@baseColor, 50%);
+
+  &.ng-reading-indicator-expanded {
+    height: auto;
+    height: 52px;
+
+    .ng-reading-indicator-headline,
+    .ng-reading-indicator-time {
+      animation-duration: 0.5s;
+      animation-name: fadeIn;
+      display: inline-block;
+    }
+  }
+
+  &.ng-reading-indicator-shrink {
+
+    .ng-reading-indicator-headline,
+    .ng-reading-indicator-time {
+      animation-duration: 0.5s;
+      animation-name: fadeOut;
+      display: none;
+    }
+
+  }
+
+// Reading indicator progressbar
+  .ng-reading-indicator-progress {
+    content: '';
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: -1;
+    background: fade(@baseColor, 90%);
+  }
+
+// Reading indicator headline
+  .ng-reading-indicator-headline {
+    display: none;
+
+    h2 {
+      display: inline-block;
+      padding: 10px 30px;
+      font-family: inherit;
+      color: fade(@fontColor, 85%);
+      margin: 5px 0;
+    }
+  }
+
+// Reading time indicator
+  .ng-reading-indicator-time {
+    display: none;
+    color: fade(@fontColor, 85%);
+    font-weight: 500;
+    float: right;
+    padding-right: 30px;
+    padding-left: 10px;
+    border-left: 1px solid fade(@fontColor, 85%);
+
+    &:before {
+      content: '';
+      position: relative;
+      background-image: url(time-white.png);
+      display: inline-block;
+      background-size: contain;
+      width: 12px;
+      height: 12px;
+      top: 1px;
+    }
+
+  }
+
+}
+
+// Animation for headline and read time indicator
+
+@keyframes fadeIn {
+  0% {
+    display:none;
+    opacity: 0;
+  }
+
+  1% {
+    display: inline-block;
+    opacity: 0;
+  }
+
+  100% {
+    display: inline-block;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    display: inline-block;
+    opacity: 1;
+  }
+
+  1% {
+    display: inline-block;
+    opacity: 1;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
