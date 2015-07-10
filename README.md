@@ -14,7 +14,7 @@ Installation
 You can choose your preferred method of installation:
 * Through bower: `bower install angular-reading-indicator --save`
 * Through npm: `npm install angular-reading-indicator --save`
-* From a CDN: [jsDelivr](https://cdn.jsdelivr.net/angular-reading-indicator/1.0.0/ng-reading-indicator.min.js)
+* From a CDN: [jsDelivr](http://www.jsdelivr.com/#!angular.reading-indicator)
 * Download from github: [angular-reading-indicator](https://github.com/dominicrico/angular-reading-indicator)
 
 Usage
