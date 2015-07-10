@@ -9,7 +9,7 @@
 
       var TEMPLATE_URL = '';
 
-      var template ='<div class="ng-reading-indicator"><div class="ng-reading-indicator-progress"></div><div class="ng-reading-indicator-headline"><h2 ng-bind-html="headline"></h2></div><div class="ng-reading-indicator-time" ng-if="readingTime"> {{ readingTime }}</div></div>';
+      var template ='<div class="ng-reading-indicator-progress"></div><div class="ng-reading-indicator-headline"><h2 ng-bind-html="headline"></h2></div><div class="ng-reading-indicator-time" ng-if="readingTime"> {{ readingTime }}</div>';
 
       $templateCache.put(TEMPLATE_URL, template);
 
@@ -36,6 +36,7 @@
                 showHeadline: true,
                 expand: true,
                 type: 'small',
+                topOffset: 150,
                 readingTime: {
                   enable: true,
                   prefix: 'estimate ca. ',
@@ -63,8 +64,8 @@
 
           extendDeep(options, scope.userOptions());
 
-          if (!options.expand && options.type === 'big') {
-            angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-expanded');
+          if (!options.expand && options.type !== 'small') {
+            angular.element(element).addClass('ng-reading-indicator-expanded');
           }
 
           elem = (!scope.elementClass || scope.elementClass === '') ? $window : scope.elementClass;
@@ -110,16 +111,16 @@
             progressBar.style.width = progress + '%';
 
             if (options.expand) {
-              if (scrollPos > top && scrollPos < (expandOn.top + 50)) {
-                angular.element(element).children()[0].style.height = '5px';
-                angular.element(angular.element(element).children()[0]).removeClass('ng-reading-indicator-expanded');
-                angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-shrink');
-              } else if (scrollPos >= (expandOn.top + 50)) {
-                angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-expanded');
-                angular.element(angular.element(element).children()[0]).removeClass('ng-reading-indicator-shrink');
-                angular.element(element).children()[0].style.height = '';
+              if (scrollPos > top && scrollPos < (expandOn.top + options.topOffset)) {
+                angular.element(element)[0].style.height = '5px';
+                angular.element(element).addClass('ng-reading-indicator-shrink');
+                angular.element(element).removeClass('ng-reading-indicator-expanded');
+              } else if (scrollPos >= (expandOn.top + options.topOffset)) {
+                angular.element(element).removeClass('ng-reading-indicator-shrink');
+                angular.element(element).addClass('ng-reading-indicator-expanded');
+                angular.element(element)[0].style.height = '';
               }else {
-                angular.element(element).children()[0].style.height = '0';
+                angular.element(element)[0].style.height = '0';
               }
             }
           }

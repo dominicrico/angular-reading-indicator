@@ -43,6 +43,7 @@ options = {
   showHeadline: true, // Show headline in the progress bar (only works if expand is true or type is "big")
   expand: true, // Show small bar and expand to big after passing the headline
   type: 'small', // Type of bar if expand is "false" available options are "small" or "big"
+  topOffset: 150, // Offset relative to first headline to expand the progress bar
   readingTime: {
     enable: true, // Show the estimate reading time
     prefix: 'estimate ca. ', // Prefix of estimate
@@ -65,7 +66,7 @@ Use ng-reading-indicator directive to display the reading progress on top of the
 <ng-reading-indicator indicator-headline="myHeadline" indicator-element=".myArticle" indicator-options="options"></ng-reading-indicator>
 ```
 
-##### If you want to display a different text then the headline use the "indicator-headline"-attribute.
+If you want to display a different text then the headline use the "indicator-headline"-attribute.
 
 ```js
  $scope.myHeadline = 'Lorem Ipsum';
@@ -75,12 +76,17 @@ Use ng-reading-indicator directive to display the reading progress on top of the
 <ng-reading-indicator indicator-headline="myHeadline"></ng-reading-indicator>
 ```
 
-##### If you want to use the progress bar just for one special element use the indicator-element-attribute and insert the classname (only the first element with class will be used, will be extendet to id in future release)
+If you want to use the progress bar just for one special element use the indicator-element-attribute and insert the classname (only the first element with class will be used, will be extendet to id in future release)
 
 ```html
 <ng-reading-indicator indicator-element=".myArticle"></ng-reading-indicator>
 ```
 
+You are also able to create your own template and use it via indicator-template-url.
+If you want to display the headline just add a {{ headline }} in your template. Do you want to display the reading time estimate  then add {{ readingTime }} inside your template. And last but not least we need an element with the class "ng-reading-indicator-progress" as progress bar.
+```html
+<ng-reading-indicator indicator-template-url="foo.html"></ng-reading-indicator>
+```
 
 License
 ----

@@ -1,4 +1,5 @@
-.ng-reading-indicator {
+ng-reading-indicator,
+[ng-reading-indicator] {
   position: fixed;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14,27 +15,33 @@
   background: rgba(19, 146, 176, 0.8);
   box-shadow: 2px 2px 2px rgba(19, 146, 176, 0.5);
 }
-.ng-reading-indicator.ng-reading-indicator-expanded {
+ng-reading-indicator.ng-reading-indicator-expanded,
+[ng-reading-indicator].ng-reading-indicator-expanded {
   height: auto;
   height: 52px;
 }
-.ng-reading-indicator.ng-reading-indicator-expanded .ng-reading-indicator-headline,
-.ng-reading-indicator.ng-reading-indicator-expanded .ng-reading-indicator-time {
+ng-reading-indicator.ng-reading-indicator-expanded .ng-reading-indicator-headline,
+[ng-reading-indicator].ng-reading-indicator-expanded .ng-reading-indicator-headline,
+ng-reading-indicator.ng-reading-indicator-expanded .ng-reading-indicator-time,
+[ng-reading-indicator].ng-reading-indicator-expanded .ng-reading-indicator-time {
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
   display: inline-block;
 }
-.ng-reading-indicator.ng-reading-indicator-shrink .ng-reading-indicator-headline,
-.ng-reading-indicator.ng-reading-indicator-shrink .ng-reading-indicator-time {
+ng-reading-indicator.ng-reading-indicator-shrink .ng-reading-indicator-headline,
+[ng-reading-indicator].ng-reading-indicator-shrink .ng-reading-indicator-headline,
+ng-reading-indicator.ng-reading-indicator-shrink .ng-reading-indicator-time,
+[ng-reading-indicator].ng-reading-indicator-shrink .ng-reading-indicator-time {
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
   -webkit-animation-name: fadeOut;
           animation-name: fadeOut;
   display: none;
 }
-.ng-reading-indicator .ng-reading-indicator-progress {
+ng-reading-indicator .ng-reading-indicator-progress,
+[ng-reading-indicator] .ng-reading-indicator-progress {
   content: '';
   position: absolute;
   margin: auto;
@@ -44,17 +51,20 @@
   z-index: -1;
   background: rgba(19, 146, 176, 0.9);
 }
-.ng-reading-indicator .ng-reading-indicator-headline {
+ng-reading-indicator .ng-reading-indicator-headline,
+[ng-reading-indicator] .ng-reading-indicator-headline {
   display: none;
 }
-.ng-reading-indicator .ng-reading-indicator-headline h2 {
+ng-reading-indicator .ng-reading-indicator-headline h2,
+[ng-reading-indicator] .ng-reading-indicator-headline h2 {
   display: inline-block;
   padding: 10px 30px;
   font-family: inherit;
   color: rgba(255, 255, 255, 0.85);
   margin: 5px 0;
 }
-.ng-reading-indicator .ng-reading-indicator-time {
+ng-reading-indicator .ng-reading-indicator-time,
+[ng-reading-indicator] .ng-reading-indicator-time {
   display: none;
   color: rgba(255, 255, 255, 0.85);
   font-weight: 500;
@@ -63,7 +73,8 @@
   padding-left: 10px;
   border-left: 1px solid rgba(255, 255, 255, 0.85);
 }
-.ng-reading-indicator .ng-reading-indicator-time:before {
+ng-reading-indicator .ng-reading-indicator-time:before,
+[ng-reading-indicator] .ng-reading-indicator-time:before {
   content: '';
   position: relative;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAvZJREFUeNqM1ltIVEEcx/Gzxw0spYguWl4qSQrEB3szosIuYiGmLxmFSWBXSAyMQigrSKiHiqTL9mJBBN2zEoIoQsieupmZ3a9mJRWbGUS2fUd+B6blrDrwWc7OOTszZ+b/n9lAJBJxBigTMQszMQWjVB/Ga7SgGe9jNRCI0cF4rEYRRjoDl59oRAidQ+lgLnYg2aozI36HbpgfjMGkqM7NvZ249l9rpgNLCdrRIY1YgkTdjxNzPQKFOG89byyz27TfYDaOwtX3QzigdViOOUgyb43PmvuTeIt1qNQ9UzZ6b+J1MBYXMU4P1OAsqrBGc3sLrZqiLHWYjgbUoRB7NMDvWr8u71VqrFesVN1BPMZSBFWXgnRruorRimOqq7DaqesfPB9JuKvKJj1YhSfIseYzE4/UabZVn4U2DdJ8v6C2HpgBuZr7BE1NSCG6Fttxz4qHFAxDHCZb9W3YgjKkoV718ch3lUSm/NDClPXPneOciQrfPuu6N+reZS12hRY/rPrcIB8Z+mIe+IU83MTfAZIrB38UNZ/QjiYt9G88xwykBq1k6dbrm0jq8Gk0aF1XiPdmRYqwFWrjo+4luH7bR4xRd2nU0cXVb/z2nEBQc+8o/c1oviDT52EzDaVa7Ig1EJMjT7FIc9+nhDSlx3TwCtOUNPGaf/PwLp9RtYpfKcBtRZo3wE5XlY7WYgFOYAJKnKGXAoVuSNu7t623mMRIxn0lxxUlS7U2veyozdDPdGVzrb6fU1sPkeY9VGul+AbVHVGGFls7qM3FYg2uQXXlVjt77d3UhOYlLbSp2KxDZCvK8QbX8Uz3p2KecugUak3WYp/CNKzQ7bS36zxt0V507MdhHSwrNbejde+bjsvjeIlVqLa2+k246nfglGqT817THCb5SLCmxdX1cMzH6agDpyzWgeOVhdhmnQ3ekflCB01EcZ5hRYspX7Fb+9Kgh74J0/XKh8RBQrRXm2S937+LwCB/W1K1Nrnair3OevABd3BDQeBb/gkwAL82fwDk50ljAAAAAElFTkSuQmCC);
