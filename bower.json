@@ -33,5 +33,8 @@
   },
   "dependencies": {
     "angular-sanitize": "~1.4.2"
+  },
+  "resolutions": {
+    "angular": "~1.4.2"
   }
 }
