@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular-reading-indicator by dominicrico</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Angular-reading-indicator</h1>
+      <h2 class="project-tagline">Angular Reading Indicator Plugin</h2>
+      <a href="https://github.com/dominicrico/angular-reading-indicator" class="btn">View on GitHub</a>
+      <a href="https://github.com/dominicrico/angular-reading-indicator/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/dominicrico/angular-reading-indicator/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>AngularJS directive that shows progressbar with the current reading progress of a given article or the whole website with a reading time estimate.</p>
+
+<p><a href="https://travis-ci.org/dominicrico/angular-reading-indicator"><img src="https://travis-ci.org/dominicrico/angular-reading-indicator.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/dominicrico/angular-reading-indicator"><img src="https://coveralls.io/repos/dominicrico/angular-reading-indicator/badge.png" alt="Coverage Status"></a></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>You can choose your preferred method of installation:</p>
+
+<ul>
+<li>Through bower: <code>bower install angular-reading-indicator --save</code>
+</li>
+<li>Through npm: <code>npm install angular-reading-indicator --save</code>
+</li>
+<li>From a CDN: <a href="https://cdn.jsdelivr.net/angular-reading-indicator/1.0.0/ng-reading-indicator.min.js">jsDelivr</a>
+</li>
+<li>Download from github: <a href="https://github.com/dominicrico/angular-reading-indicator">angular-reading-indicator</a>
+</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Include both ng-reading-indicator.min.js and ng-reading-indicator.min.css in your application.</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>components/angular-reading-indicator/ng-reading-indicator.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+
+&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>components/angular-reading-indicator/ng-reading-indicator.min.css<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>Add the module <code>ngReadingIndicator</code> as a dependency to your app module:</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> myapp <span class="pl-k">=</span> angular.module(<span class="pl-s"><span class="pl-pds">'</span>myapp<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>ngReadingIndicator<span class="pl-pds">'</span></span>]);</pre></div>
+
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h3>
+
+<p>Set your prefered options to customize the look of the progress bar and reading estimate.
+Available/Default options:</p>
+
+<div class="highlight highlight-js"><pre>options <span class="pl-k">=</span> {
+  showHeadline<span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-c">// Show headline in the progress bar (only works if expand is true or type is "big")</span>
+  expand<span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-c">// Show small bar and expand to big after passing the headline</span>
+  type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>small<span class="pl-pds">'</span></span>, <span class="pl-c">// Type of bar if expand is "false" available options are "small" or "big"</span>
+  readingTime<span class="pl-k">:</span> {
+    enable<span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-c">// Show the estimate reading time</span>
+    prefix<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>estimate ca. <span class="pl-pds">'</span></span>, <span class="pl-c">// Prefix of estimate</span>
+    suffix<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>min<span class="pl-pds">'</span></span>, <span class="pl-c">// Suffix of estimate</span>
+    speed<span class="pl-k">:</span> <span class="pl-c1">150</span>, <span class="pl-c">// Reading speed in words per minute</span>
+    seconds<span class="pl-k">:</span> <span class="pl-c1">false</span> <span class="pl-c">// Display estimate as minutes:seconds ex. 05:22</span>
+  }
+};</pre></div>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span> <span class="pl-e">indicator-options</span>=<span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;</pre></div>
+
+<h3>
+<a id="ngreadingindicator-directive" class="anchor" href="#ngreadingindicator-directive" aria-hidden="true"><span class="octicon octicon-link"></span></a>ngReadingIndicator directive</h3>
+
+<p>Use ng-reading-indicator directive to display the reading progress on top of the window:</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;
+&lt;<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span> <span class="pl-e">indicator-headline</span>=<span class="pl-s"><span class="pl-pds">"</span>myHeadline<span class="pl-pds">"</span></span> <span class="pl-e">indicator-element</span>=<span class="pl-s"><span class="pl-pds">"</span>.myArticle<span class="pl-pds">"</span></span> <span class="pl-e">indicator-options</span>=<span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;</pre></div>
+
+<h5>
+<a id="if-you-want-to-display-a-different-text-then-the-headline-use-the-indicator-headline-attribute" class="anchor" href="#if-you-want-to-display-a-different-text-then-the-headline-use-the-indicator-headline-attribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>If you want to display a different text then the headline use the "indicator-headline"-attribute.</h5>
+
+<div class="highlight highlight-js"><pre> $scope.myHeadline <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Lorem Ipsum<span class="pl-pds">'</span></span>;</pre></div>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span> <span class="pl-e">indicator-headline</span>=<span class="pl-s"><span class="pl-pds">"</span>myHeadline<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;</pre></div>
+
+<h5>
+<a id="if-you-want-to-use-the-progress-bar-just-for-one-special-element-use-the-indicator-element-attribute-and-insert-the-classname-only-the-first-element-with-class-will-be-used-will-be-extendet-to-id-in-future-release" class="anchor" href="#if-you-want-to-use-the-progress-bar-just-for-one-special-element-use-the-indicator-element-attribute-and-insert-the-classname-only-the-first-element-with-class-will-be-used-will-be-extendet-to-id-in-future-release" aria-hidden="true"><span class="octicon octicon-link"></span></a>If you want to use the progress bar just for one special element use the indicator-element-attribute and insert the classname (only the first element with class will be used, will be extendet to id in future release)</h5>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span> <span class="pl-e">indicator-element</span>=<span class="pl-s"><span class="pl-pds">"</span>.myArticle<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">ng</span><span class="pl-e">-reading-indicator</span>&gt;</pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Released under the terms of the <a href="LICENSE">MIT License</a>.</p>
+
+<p>Copyright (C) 2015, Dominic Rico-Gomez <a href="mailto:hello@coderocket.me">hello@coderocket.me</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/dominicrico/angular-reading-indicator">Angular-reading-indicator</a> is maintained by <a href="https://github.com/dominicrico">dominicrico</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
