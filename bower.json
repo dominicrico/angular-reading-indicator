@@ -29,5 +29,8 @@
   ],
   "devDependencies": {
     "angular": "~1.4.2"
+  },
+  "dependencies": {
+    "angular-sanitize": "~1.4.2"
   }
 }
