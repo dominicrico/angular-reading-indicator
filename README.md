@@ -1,7 +1,7 @@
 angular-reading-indicator
 ===========================
 
-AngularJS directive which shows progress bar with the current reading progress of a given article or the whole website with a reading time estimate.
+AngularJS directive which shows a progress bar with the current reading progress of a given article or the whole website with a reading time estimate.
 
 Copyright (C) 2015, Dominic Rico-Gomez <hello@coderocket.me>
 
