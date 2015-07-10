@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/dominicrico/angular-reading-indicator/issues"
   },
-  "homepage": "https://github.com/dominicrico/angular-reading-indicator",
+  "homepage": "http://dominicrico.github.io/angular-reading-indicator",
   "engines": {
     "node": ">=0.10.0"
   },
