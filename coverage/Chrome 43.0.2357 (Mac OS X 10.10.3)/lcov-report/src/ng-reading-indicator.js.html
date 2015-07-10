@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/ng-reading-indicator.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
+    <h2>
+        Statements: <span class="metric">18.06% <small>(13 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">3.33% <small>(2 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">25% <small>(3 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">18.06% <small>(13 / 72)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">(function(angular, undefined){
+  'use strict';
+&nbsp;
+  var ngReadingIndicator = angular.module('ngReadingIndicator', ['ngSanitize']);
+&nbsp;
+  ngReadingIndicator.directive('ngReadingIndicator', [
+    '$window', '$document', '$templateCache', '$sce', '$timeout',
+    function($window, $document, $templateCache, $sce, $timeout) {
+&nbsp;
+      var TEMPLATE_URL = '';
+&nbsp;
+      var template ='&lt;div class="ng-reading-indicator"&gt;&lt;div class="ng-reading-indicator-progress"&gt;&lt;/div&gt;&lt;div class="ng-reading-indicator-headline"&gt;&lt;h2 ng-bind-html="headline"&gt;&lt;/h2&gt;&lt;/div&gt;&lt;div class="ng-reading-indicator-time" ng-if="readingTime"&gt; {{ readingTime }}&lt;/div&gt;&lt;/div&gt;';
+&nbsp;
+      $templateCache.put(TEMPLATE_URL, template);
+&nbsp;
+      return {
+        restrict: 'AE',
+        scope: {
+          elementClass: '@indicatorElement',
+          userOptions: '&amp;indicatorOptions',
+          headline: '&amp;indicatorHeadline'
+        },
+        templateUrl: function (element, attributes) {
+          return (attributes.indicatorTemplateUrl || TEMPLATE_URL);
+        },
+        link: <span class="fstat-no" title="function not covered" >function(scope, element) {</span>
+<span class="cstat-no" title="statement not covered" >          var headline = null,</span>
+              article = null,
+              bottom = null,
+              top = null,
+              progress = null,
+              progressBar = null,
+              elem = null,
+              expandOn = null,
+              options = {
+                showHeadline: true,
+                expand: true,
+                type: 'small',
+                readingTime: {
+                  enable: true,
+                  prefix: 'estimate ca. ',
+                  suffix: 'min',
+                  speed: 150,
+                  seconds: false
+                }
+              };
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function extendDeep(dst) {</span>
+<span class="cstat-no" title="statement not covered" >            angular.forEach(arguments, <span class="fstat-no" title="function not covered" >function (obj) {</span></span>
+<span class="cstat-no" title="statement not covered" >              if (obj !== dst) {</span>
+<span class="cstat-no" title="statement not covered" >                angular.forEach(obj, <span class="fstat-no" title="function not covered" >function (value, key) {</span></span>
+<span class="cstat-no" title="statement not covered" >                  if (dst[key] &amp;&amp; dst[key].constructor &amp;&amp; dst[key].constructor === Object) {</span>
+<span class="cstat-no" title="statement not covered" >                    extendDeep(dst[key], value);</span>
+                  }
+                  else {
+<span class="cstat-no" title="statement not covered" >                    dst[key] = value;</span>
+                  }
+                });
+              }
+            });
+<span class="cstat-no" title="statement not covered" >            return dst;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          extendDeep(options, scope.userOptions());</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (!options.expand &amp;&amp; options.type === 'big') {</span>
+<span class="cstat-no" title="statement not covered" >            angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-expanded');</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          elem = (!scope.elementClass || scope.elementClass === '') ? $window : scope.elementClass;</span>
+<span class="cstat-no" title="statement not covered" >          article = (!scope.elementClass || scope.elementClass === '') ? angular.element(document.getElementsByTagName('body')) : angular.element(document.getElementsByClassName(elem.replace('.', ''))[0]);</span>
+<span class="cstat-no" title="statement not covered" >          progressBar = document.getElementsByClassName('ng-reading-indicator-progress')[0];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          if (options.expand || (!options.expand &amp;&amp; options.type !== 'small')) {</span>
+<span class="cstat-no" title="statement not covered" >            $timeout(<span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >              if (options.showHeadline &amp;&amp; scope.headline()) {</span>
+<span class="cstat-no" title="statement not covered" >                headline = scope.headline();</span>
+              } else <span class="cstat-no" title="statement not covered" >if (options.showHeadline &amp;&amp; !scope.headline()) {</span>
+<span class="cstat-no" title="statement not covered" >                headline = angular.element(article.find('h1')[0]).html();</span>
+              } else {
+<span class="cstat-no" title="statement not covered" >                headline = false;</span>
+              }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              scope.headline = (headline) ? $sce.trustAsHtml(headline) : null;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >              scope.readingTime = (options.readingTime.enable) ? calculateReadingTime() : null;</span>
+            });
+          }
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function findEdges(elem) {</span>
+<span class="cstat-no" title="statement not covered" >            var bodyRect = document.body.getBoundingClientRect(),</span>
+                elemRect = elem.getBoundingClientRect();
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return {</span>
+              top: (elemRect.top - bodyRect.top),
+              bottom: (elem.scrollHeight - window.innerHeight)
+            };
+          }
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function updateSize() {</span>
+<span class="cstat-no" title="statement not covered" >            bottom = findEdges(article[0]).bottom;</span>
+<span class="cstat-no" title="statement not covered" >            top = findEdges(article[0]).top;</span>
+<span class="cstat-no" title="statement not covered" >            expandOn = findEdges(article.find('h1')[0]);</span>
+<span class="cstat-no" title="statement not covered" >            updateProgress();</span>
+          }
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function updateProgress() {</span>
+<span class="cstat-no" title="statement not covered" >            var scrollPos = angular.element($window)[0].scrollY || angular.element($window)[0].pageYOffset;</span>
+<span class="cstat-no" title="statement not covered" >            progress = (scrollPos &lt;= top) ? 0 : ((scrollPos - top) / bottom) * 100;</span>
+<span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (options.expand) {</span>
+<span class="cstat-no" title="statement not covered" >              if (scrollPos &gt; top &amp;&amp; scrollPos &lt; (expandOn.top + 50)) {</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(element).children()[0].style.height = '5px';</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(angular.element(element).children()[0]).removeClass('ng-reading-indicator-expanded');</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-shrink');</span>
+              } else <span class="cstat-no" title="statement not covered" >if (scrollPos &gt;= (expandOn.top + 50)) {</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(angular.element(element).children()[0]).addClass('ng-reading-indicator-expanded');</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(angular.element(element).children()[0]).removeClass('ng-reading-indicator-shrink');</span>
+<span class="cstat-no" title="statement not covered" >                angular.element(element).children()[0].style.height = '';</span>
+              }else {
+<span class="cstat-no" title="statement not covered" >                angular.element(element).children()[0].style.height = '0';</span>
+              }
+            }
+          }
+&nbsp;
+<span class="fstat-no" title="function not covered" >          function calculateReadingTime(){</span>
+<span class="cstat-no" title="statement not covered" >            var wordCount = article.text().split(' ').length;</span>
+<span class="cstat-no" title="statement not covered" >            var minutes = Math.floor(wordCount / options.readingTime.speed);</span>
+<span class="cstat-no" title="statement not covered" >            var seconds = Math.floor(wordCount % options.readingTime.speed / (options.readingTime.speed / 60));</span>
+<span class="cstat-no" title="statement not covered" >            var estimate = 	options.readingTime.prefix;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (!options.readingTime.seconds &amp;&amp; seconds &gt;= 30) {</span>
+<span class="cstat-no" title="statement not covered" >              minutes++;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            estimate += (minutes &lt;= 9 ? '0' : '');</span>
+<span class="cstat-no" title="statement not covered" >            estimate += minutes;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (options.readingTime.seconds) {</span>
+<span class="cstat-no" title="statement not covered" >              estimate += ':';</span>
+<span class="cstat-no" title="statement not covered" >              estimate += (seconds &lt;= 9 ? '0' : '');</span>
+<span class="cstat-no" title="statement not covered" >              estimate += seconds;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.suffix;</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            return estimate;</span>
+          }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >          updateSize();</span>
+<span class="cstat-no" title="statement not covered" >          angular.element($window).on('scroll', updateProgress);</span>
+<span class="cstat-no" title="statement not covered" >          angular.element($window).on('resize', updateSize);</span>
+        }
+      };
+    }
+  ]);
+&nbsp;
+})(window.angular);
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 10 2015 18:18:50 GMT+0200 (CEST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

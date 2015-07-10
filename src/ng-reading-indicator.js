@@ -151,6 +151,11 @@
           updateSize();
           angular.element($window).on('scroll', updateProgress);
           angular.element($window).on('resize', updateSize);
+
+          scope.$on('$destroy', function () {
+            angular.element($window).off('scroll', updateProgress);
+            angular.element($window).off('resize', updateSize);
+          });
         }
       };
     }

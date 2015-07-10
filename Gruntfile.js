@@ -50,6 +50,13 @@ module.exports = function(grunt) {
       ]
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true
+      }
+    },
+
     // Uglify task configuration.
     uglify: {
       options: {
@@ -67,11 +74,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task.
   grunt.registerTask('build', ['less', 'autoprefixer', 'cssmin', 'uglify']);
-  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('test', ['jshint', 'karma']);
 
 };
