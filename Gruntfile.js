@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-
+  'use strict';
   // ngReadingIndicator grunt configuration.
   grunt.initConfig({
 
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       },
       ngReadingIndicator: {
         files: {
-          "src/ng-reading-indicator.css": "src/ng-reading-indicator.less"
+          'src/ng-reading-indicator.css': 'src/ng-reading-indicator.less'
         }
       }
     },
@@ -39,6 +39,17 @@ module.exports = function(grunt) {
       }
     },
 
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'Gruntfile.js',
+        'src/ng-reading-indicator.js',
+        'tests.js'
+      ]
+    },
+
     // Uglify task configuration.
     uglify: {
       options: {
@@ -54,11 +65,13 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task.
-  grunt.registerTask('default', ['less', 'autoprefixer', 'cssmin', 'uglify']);
+  grunt.registerTask('build', ['less', 'autoprefixer', 'cssmin', 'uglify']);
+  grunt.registerTask('test', ['jshint']);
 
 };

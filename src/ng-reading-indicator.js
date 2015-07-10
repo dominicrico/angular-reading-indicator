@@ -23,7 +23,7 @@
         templateUrl: function (element, attributes) {
           return (attributes.indicatorTemplateUrl || TEMPLATE_URL);
         },
-        link: function(scope, element, attr) {
+        link: function(scope, element) {
           var headline = null,
               article = null,
               bottom = null,
@@ -73,19 +73,19 @@
 
           if (options.expand || (!options.expand && options.type !== 'small')) {
             $timeout(function(){
-              if (options.showHeadline && scope.headline()) headline = scope.headline()
-              else if (options.showHeadline && !scope.headline()) headline = angular.element(article.find('h1')[0]).html();
-              else headline = false;
+              if (options.showHeadline && scope.headline()) {
+                headline = scope.headline();
+              } else if (options.showHeadline && !scope.headline()) {
+                headline = angular.element(article.find('h1')[0]).html();
+              } else {
+                headline = false;
+              }
 
               scope.headline = (headline) ? $sce.trustAsHtml(headline) : null;
 
               scope.readingTime = (options.readingTime.enable) ? calculateReadingTime() : null;
             });
           }
-
-          updateSize();
-          angular.element($window).on('scroll', updateProgress);
-          angular.element($window).on('resize', updateSize);
 
           function findEdges(elem) {
             var bodyRect = document.body.getBoundingClientRect(),
@@ -101,7 +101,7 @@
             bottom = findEdges(article[0]).bottom;
             top = findEdges(article[0]).top;
             expandOn = findEdges(article.find('h1')[0]);
-            updateProgress()
+            updateProgress();
           }
 
           function updateProgress() {
@@ -130,14 +130,16 @@
             var seconds = Math.floor(wordCount % options.readingTime.speed / (options.readingTime.speed / 60));
             var estimate = 	options.readingTime.prefix;
 
-            if (!options.readingTime.seconds && seconds >= 30) minutes++;
+            if (!options.readingTime.seconds && seconds >= 30) {
+              minutes++;
+            }
 
-            estimate += (minutes <= 9 ? "0" : "");
+            estimate += (minutes <= 9 ? '0' : '');
             estimate += minutes;
 
             if (options.readingTime.seconds) {
-              estimate += ':'
-              estimate += (seconds <= 9 ? "0" : "");
+              estimate += ':';
+              estimate += (seconds <= 9 ? '0' : '');
               estimate += seconds;
             } else {
               estimate += options.readingTime.suffix;
@@ -145,6 +147,10 @@
 
             return estimate;
           }
+
+          updateSize();
+          angular.element($window).on('scroll', updateProgress);
+          angular.element($window).on('resize', updateSize);
         }
       };
     }
