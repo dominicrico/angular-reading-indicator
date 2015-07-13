@@ -32,7 +32,8 @@
               progress = null,
               progressBar = null,
               elem = null,
-              expandOn = null,
+              expandOffset = null,
+              expandOnHeadline = false,
               options = {
                 showHeadline: true,
                 expand: true,
@@ -80,6 +81,7 @@
                   headline = scope.headline;
                 } else if (options.showHeadline && !scope.headline && article.find('h1').length > 0) {
                   headline = angular.element(article.find('h1')[0]).html();
+                  expandOnHeadline = false;
                 } else {
                   headline = false;
                 }
@@ -101,14 +103,14 @@
 
             return {
               top: (elemRect.top - bodyRect.top),
-              bottom: (elem.scrollHeight - window.innerHeight)
+              bottom: elem.scrollHeight || 0
             };
           }
 
           function updateSize() {
             bottom = findEdges(article[0]).bottom;
             top = findEdges(article[0]).top;
-            expandOn = (headline) ? findEdges(article.find('h1')[0]) : {top: 50};
+            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};
             updateProgress();
           }
 
@@ -118,11 +120,11 @@
             progressBar.style.width = progress + '%';
 
             if (options.expand) {
-              if (scrollPos > top && scrollPos < (expandOn.top + options.topOffset)) {
+              if (scrollPos > top && scrollPos < (expandOffset.top + options.topOffset)) {
                 angular.element(element)[0].style.height = '5px';
                 angular.element(element).addClass('ng-reading-indicator-shrink');
                 angular.element(element).removeClass('ng-reading-indicator-expanded');
-              } else if (scrollPos >= (expandOn.top + options.topOffset)) {
+              } else if (scrollPos >= (expandOffset.top + options.topOffset)) {
                 angular.element(element).removeClass('ng-reading-indicator-shrink');
                 angular.element(element).addClass('ng-reading-indicator-expanded');
                 angular.element(element)[0].style.height = '';

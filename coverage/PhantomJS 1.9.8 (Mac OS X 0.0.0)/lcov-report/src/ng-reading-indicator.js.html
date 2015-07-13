@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
     <h2>
-        Statements: <span class="metric">35.8% <small>(29 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">19.72% <small>(14 / 71)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">35.37% <small>(29 / 82)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">19.18% <small>(14 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">46.67% <small>(7 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">35.8% <small>(29 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">35.37% <small>(29 / 82)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
@@ -203,7 +203,9 @@
 176
 177
 178
-179</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+179
+180
+181</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -231,6 +233,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -281,6 +284,7 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -415,7 +419,8 @@
               progress = null,
               progressBar = null,
               elem = null,
-              expandOn = null,
+              expandOffset = null,
+              expandOnHeadline = false,
               options = {
                 showHeadline: true,
                 expand: true,
@@ -463,6 +468,7 @@
 <span class="cstat-no" title="statement not covered" >                  headline = scope.headline;</span>
                 } else <span class="cstat-no" title="statement not covered" >if (options.showHeadline &amp;&amp; !scope.headline &amp;&amp; article.find('h1').length &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >                  headline = angular.element(article.find('h1')[0]).html();</span>
+<span class="cstat-no" title="statement not covered" >                  expandOnHeadline = false;</span>
                 } else {
 <span class="cstat-no" title="statement not covered" >                  headline = false;</span>
                 }
@@ -484,14 +490,14 @@
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            return {</span>
               top: (elemRect.top - bodyRect.top),
-              bottom: (elem.scrollHeight - window.innerHeight)
+              bottom: elem.scrollHeight || 0
             };
           }
 &nbsp;
 <span class="fstat-no" title="function not covered" >          function updateSize() {</span>
 <span class="cstat-no" title="statement not covered" >            bottom = findEdges(article[0]).bottom;</span>
 <span class="cstat-no" title="statement not covered" >            top = findEdges(article[0]).top;</span>
-<span class="cstat-no" title="statement not covered" >            expandOn = (headline) ? findEdges(article.find('h1')[0]) : {top: 50};</span>
+<span class="cstat-no" title="statement not covered" >            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};</span>
 <span class="cstat-no" title="statement not covered" >            updateProgress();</span>
           }
 &nbsp;
@@ -501,11 +507,11 @@
 <span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            if (options.expand) {</span>
-<span class="cstat-no" title="statement not covered" >              if (scrollPos &gt; top &amp;&amp; scrollPos &lt; (expandOn.top + options.topOffset)) {</span>
+<span class="cstat-no" title="statement not covered" >              if (scrollPos &gt; top &amp;&amp; scrollPos &lt; (expandOffset.top + options.topOffset)) {</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element)[0].style.height = '5px';</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element).addClass('ng-reading-indicator-shrink');</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element).removeClass('ng-reading-indicator-expanded');</span>
-              } else <span class="cstat-no" title="statement not covered" >if (scrollPos &gt;= (expandOn.top + options.topOffset)) {</span>
+              } else <span class="cstat-no" title="statement not covered" >if (scrollPos &gt;= (expandOffset.top + options.topOffset)) {</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element).removeClass('ng-reading-indicator-shrink');</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element).addClass('ng-reading-indicator-expanded');</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element)[0].style.height = '';</span>
@@ -564,7 +570,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 13 2015 10:38:17 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 13 2015 11:33:41 GMT+0200 (CEST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
