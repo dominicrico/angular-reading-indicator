@@ -29,6 +29,7 @@
               article = null,
               bottom = null,
               top = null,
+              height = null,
               progress = null,
               progressBar = null,
               elem = null,
@@ -103,20 +104,28 @@
 
             return {
               top: (elemRect.top - bodyRect.top),
-              bottom: (elem.scrollHeight - window.innerHeight) || 0
+              bottom: (elem.scrollHeight - window.innerHeight > 0 ) ? elem.scrollHeight - window.innerHeight : elem.scrollHeight,
+              height: elemRect.height
             };
           }
 
           function updateSize() {
             bottom = findEdges(article[0]).bottom;
             top = findEdges(article[0]).top;
+            height = findEdges(article[0]).height;
             expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};
             updateProgress();
           }
 
           function updateProgress() {
             var scrollPos = angular.element($window)[0].scrollY || angular.element($window)[0].pageYOffset;
-            progress = (scrollPos <= top) ? 0 : ((scrollPos - top) / bottom) * 100;
+
+            if (article[0].scrollHeight - window.innerHeight > 0) {
+              progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / bottom) * 100;
+            } else {
+              progress = (scrollPos <= top) ? 0 : (((scrollPos-top)+((top + height) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;
+            }
+
             progressBar.style.width = progress + '%';
 
             if (options.expand) {

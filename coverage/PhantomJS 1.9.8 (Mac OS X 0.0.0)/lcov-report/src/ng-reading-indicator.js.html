@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
     <h2>
-        Statements: <span class="metric">35.37% <small>(29 / 82)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">19.18% <small>(14 / 73)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">34.12% <small>(29 / 85)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">18.18% <small>(14 / 77)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">46.67% <small>(7 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">35.37% <small>(29 / 82)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">34.12% <small>(29 / 85)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
@@ -205,7 +205,16 @@
 178
 179
 180
-181</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -233,6 +242,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -314,7 +324,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -323,7 +335,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -416,6 +434,7 @@
               article = null,
               bottom = null,
               top = null,
+              height = null,
               progress = null,
               progressBar = null,
               elem = null,
@@ -490,20 +509,28 @@
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            return {</span>
               top: (elemRect.top - bodyRect.top),
-              bottom: elem.scrollHeight || 0
+              bottom: (elem.scrollHeight - window.innerHeight &gt; 0 ) ? elem.scrollHeight - window.innerHeight : elem.scrollHeight,
+              height: elemRect.height
             };
           }
 &nbsp;
 <span class="fstat-no" title="function not covered" >          function updateSize() {</span>
 <span class="cstat-no" title="statement not covered" >            bottom = findEdges(article[0]).bottom;</span>
 <span class="cstat-no" title="statement not covered" >            top = findEdges(article[0]).top;</span>
+<span class="cstat-no" title="statement not covered" >            height = findEdges(article[0]).height;</span>
 <span class="cstat-no" title="statement not covered" >            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};</span>
 <span class="cstat-no" title="statement not covered" >            updateProgress();</span>
           }
 &nbsp;
 <span class="fstat-no" title="function not covered" >          function updateProgress() {</span>
 <span class="cstat-no" title="statement not covered" >            var scrollPos = angular.element($window)[0].scrollY || angular.element($window)[0].pageYOffset;</span>
-<span class="cstat-no" title="statement not covered" >            progress = (scrollPos &lt;= top) ? 0 : ((scrollPos - top) / bottom) * 100;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (article[0].scrollHeight - window.innerHeight &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >              progress = (scrollPos &lt;= top) ? 0 : ((scrollPos-top) / bottom) * 100;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >              progress = (scrollPos &lt;= top) ? 0 : (((scrollPos-top)+((top + height) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;</span>
+            }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            if (options.expand) {</span>
@@ -570,7 +597,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 13 2015 11:33:41 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 13 2015 15:27:06 GMT+0200 (CEST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
