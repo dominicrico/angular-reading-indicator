@@ -103,7 +103,7 @@
 
             return {
               top: (elemRect.top - bodyRect.top),
-              bottom: elem.scrollHeight || 0
+              bottom: (elem.scrollHeight - window.innerHeight) || 0
             };
           }
 
