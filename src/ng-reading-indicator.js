@@ -18,12 +18,13 @@
         scope: {
           elementClass: '@indicatorElement',
           userOptions: '&indicatorOptions',
-          headline: '&indicatorHeadline'
+          headline: '=indicatorHeadline',
+          lazy: '=indicatorLazy'
         },
         templateUrl: function (element, attributes) {
           return (attributes.indicatorTemplateUrl || TEMPLATE_URL);
         },
-        link: function(scope, element) {
+        link: function(scope, element, attributes) {
           var headline = null,
               article = null,
               bottom = null,
@@ -69,23 +70,29 @@
           }
 
           elem = (!scope.elementClass || scope.elementClass === '') ? $window : scope.elementClass;
-          article = (!scope.elementClass || scope.elementClass === '') ? angular.element(document.getElementsByTagName('body')) : angular.element(document.getElementsByClassName(elem.replace('.', ''))[0]);
+          article = (!scope.elementClass || scope.elementClass === '') ? angular.element(document.body) : angular.element(document.getElementsByClassName(elem.replace('.', ''))[0]);
           progressBar = document.getElementsByClassName('ng-reading-indicator-progress')[0];
 
-          if (options.expand || (!options.expand && options.type !== 'small')) {
-            $timeout(function(){
-              if (options.showHeadline && scope.headline()) {
-                headline = scope.headline();
-              } else if (options.showHeadline && !scope.headline() && article.find('h1').length > 0) {
-                headline = angular.element(article.find('h1')[0]).html();
-              } else {
-                headline = false;
-              }
+          function initizalize() {
+            if (options.expand || (!options.expand && options.type !== 'small')) {
+              $timeout(function(){
+                if (options.showHeadline && scope.headline) {
+                  headline = scope.headline;
+                } else if (options.showHeadline && !scope.headline && article.find('h1').length > 0) {
+                  headline = angular.element(article.find('h1')[0]).html();
+                } else {
+                  headline = false;
+                }
 
-              scope.headline = (headline) ? $sce.trustAsHtml(headline) : null;
+                scope.headline = (headline) ? headline : null;
+                scope.readingTime = (options.readingTime.enable) ? calculateReadingTime() : null;
 
-              scope.readingTime = (options.readingTime.enable) ? calculateReadingTime() : null;
-            });
+                updateSize();
+
+                angular.element($window).on('scroll', updateProgress);
+                angular.element($window).on('resize', updateSize);
+              });
+            }
           }
 
           function findEdges(elem) {
@@ -149,11 +156,15 @@
             return estimate;
           }
 
-          $timeout(function(){
-            updateSize();
-            angular.element($window).on('scroll', updateProgress);
-            angular.element($window).on('resize', updateSize);
-          });
+          if (attributes.indicatorLazy && attributes.indicatorLazy !== '') {
+            scope.$watch('lazy', function(newVal){
+              if (newVal !== '' || newVal.length > 0) {
+                initizalize();
+              }
+            });
+          } else {
+            initizalize();
+          }
 
           scope.$on('$destroy', function () {
             angular.element($window).off('scroll', updateProgress);
