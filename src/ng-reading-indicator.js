@@ -149,9 +149,11 @@
             return estimate;
           }
 
-          updateSize();
-          angular.element($window).on('scroll', updateProgress);
-          angular.element($window).on('resize', updateSize);
+          $timeout(function(){
+            updateSize();
+            angular.element($window).on('scroll', updateProgress);
+            angular.element($window).on('resize', updateSize);
+          });
 
           scope.$on('$destroy', function () {
             angular.element($window).off('scroll', updateProgress);

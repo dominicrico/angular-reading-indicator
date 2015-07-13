@@ -43,6 +43,37 @@ describe('module ngReadingIndicator', function () {
         expect(progressWidth).toBe('100%');
       }, 150);
     }));
+    /*it('should not show a headline', inject(function ($window, $document) {
+
+      var indicator = angular.element('<ng-reading-indicator></ng-reading-indicator>');
+      var el = angular.element('<article><article>' + text + text + text + text + text + text + '</article></article>');
+
+      angular.element($document[0].body).prepend(el);
+      angular.element($document[0].body).prepend(indicator);
+
+      indicator = $compile(indicator)($rootScope);
+      el = $compile(el.contents())($rootScope);
+
+      $rootScope.$digest();
+
+      expect(document.body.getElementsByTagName('h2')[0].innerHTML).toBe('');
+    }));
+    it('should show a headline', inject(function ($window, $document) {
+
+      $rootScope.headline = 'Headline';
+
+      var indicator = angular.element('<ng-reading-indicator indicator-headline="headline"></ng-reading-indicator>');
+      var el = angular.element('<article><article>' + text + text + text + text + text + text + '</article></article>');
+
+      indicator = $compile(indicator)($rootScope);
+      el = $compile(el.contents())($rootScope);
+      angular.element($document[0].body).prepend(el);
+      angular.element($document[0].body).prepend(indicator);
+
+      $rootScope.$digest();
+
+      expect(document.body.getElementsByTagName('h2')[0].innerHTML).toBe('Headline');
+    }));*/
   });
 
 });
