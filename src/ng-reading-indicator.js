@@ -129,16 +129,19 @@
             progressBar.style.width = progress + '%';
 
             if (options.expand) {
-              if (scrollPos > top && scrollPos < (expandOffset.top + options.topOffset)) {
+              console.log(scrollPos, top, (expandOffset.top + options.topOffset) );
+              if (scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset)) {
                 angular.element(element)[0].style.height = '5px';
                 angular.element(element).addClass('ng-reading-indicator-shrink');
                 angular.element(element).removeClass('ng-reading-indicator-expanded');
-              } else if (scrollPos >= (expandOffset.top + options.topOffset)) {
+              } else if (scrollPos >= (top + expandOffset.top + options.topOffset)) {
                 angular.element(element).removeClass('ng-reading-indicator-shrink');
                 angular.element(element).addClass('ng-reading-indicator-expanded');
                 angular.element(element)[0].style.height = '';
               }else {
                 angular.element(element)[0].style.height = '0';
+                angular.element(element).addClass('ng-reading-indicator-shrink');
+                angular.element(element).removeClass('ng-reading-indicator-expanded');
               }
             }
           }
