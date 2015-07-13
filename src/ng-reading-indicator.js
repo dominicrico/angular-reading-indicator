@@ -76,7 +76,7 @@
             $timeout(function(){
               if (options.showHeadline && scope.headline()) {
                 headline = scope.headline();
-              } else if (options.showHeadline && !scope.headline()) {
+              } else if (options.showHeadline && !scope.headline() && article.find('h1').length > 0) {
                 headline = angular.element(article.find('h1')[0]).html();
               } else {
                 headline = false;
@@ -101,7 +101,7 @@
           function updateSize() {
             bottom = findEdges(article[0]).bottom;
             top = findEdges(article[0]).top;
-            expandOn = findEdges(article.find('h1')[0]);
+            expandOn = (headline) ? findEdges(article.find('h1')[0]) : {top: 50};
             updateProgress();
           }
 

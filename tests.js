@@ -7,9 +7,9 @@
 'use strict';
 
 describe('module ngReadingIndicator', function () {
-  var $rootScope, $compile, $window;
+  var $rootScope, $compile, $window, $document;
 
-  /*var text = '<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p><p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero</p>';*/
+  var text = '<p>At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p><p>Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero</p>';
 
   beforeEach(module('ngReadingIndicator'));
 
@@ -17,33 +17,31 @@ describe('module ngReadingIndicator', function () {
     $rootScope = $injector.get('$rootScope');
     $compile = $injector.get('$compile');
     $window = $injector.get('$window');
+    $document = $injector.get('$document');
   }));
 
 
   describe('ng-reading-indicator directive', function () {
-    it('should show 100% read article', inject(function () {
+    it('should show 100% on bottom of page', inject(function ($window, $document) {
 
-      /*var indicator = angular.element('<ng-reading-indicator></ng-reading-indicator>');
-      var el = angular.element('<div>' + text + '</div>');
+      var indicator = angular.element('<ng-reading-indicator></ng-reading-indicator>');
+      var el = angular.element('<article><article>' + text + text + text + text + text + text + '</article></article>');
 
       indicator = $compile(indicator)($rootScope);
       el = $compile(el.contents())($rootScope);
       angular.element($document[0].body).prepend(el);
       angular.element($document[0].body).prepend(indicator);
 
-
-      console.log($document[0].body);
-
       $rootScope.$digest();
 
-      var progressWidth = indicator.getElementsByClassName('ng-reading-indicator-progress')[0].style.width;
+      var progressWidth = angular.element($document)[0].getElementsByClassName('ng-reading-indicator-progress')[0].style.width;
+      window.scrollTo(0, 99999);
 
-      $window.scrollTo(0, 99999);
-
-      // size of non-empty block element should be non-zero by default
-      expect($window.pageYOffset).to.not.equal(0);
-      expect(progressWidth).is.equal('100%');*/
-      expect(true).toBe(true);
+      window.setTimeout(function () {
+        // size of non-empty block element should be non-zero by default
+        expect(window.pageYOffset).not.toBe(0);
+        expect(progressWidth).toBe('100%');
+      }, 150);
     }));
   });
 
