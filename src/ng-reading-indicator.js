@@ -71,6 +71,8 @@
 
           if (!options.expand && options.type !== 'small') {
             angular.element(element).addClass('ng-reading-indicator-expanded');
+          } else if (!options.expand && options.type !== 'big') {
+            angular.element(element).addClass('ng-reading-indicator-shrink');
           }
 
           elem = (!scope.elementClass || scope.elementClass === '') ? $window : scope.elementClass;
@@ -90,13 +92,13 @@
                 }
 
                 scope.headline = (headline) ? headline : null;
-
-                updateSize();
-
-                angular.element($window).on('scroll', updateProgress);
-                angular.element($window).on('resize', updateSize);
               });
             }
+
+            updateSize();
+
+            angular.element($window).on('scroll', updateProgress);
+            angular.element($window).on('resize', updateSize);
           }
 
           function findEdges(elem) {
@@ -115,7 +117,6 @@
             top = findEdges(article[0]).top;
             height = findEdges(article[0]).height;
             expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};
-            updateProgress();
           }
 
           function updateProgress() {
@@ -136,21 +137,18 @@
             }
 
             progressBar.style.width = progress + '%';
-
-            if (options.expand) {
-              if (scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset)) {
-                angular.element(element)[0].style.height = '5px';
-                angular.element(element).addClass('ng-reading-indicator-shrink');
-                angular.element(element).removeClass('ng-reading-indicator-expanded');
-              } else if (scrollPos >= (top + expandOffset.top + options.topOffset)) {
-                angular.element(element).removeClass('ng-reading-indicator-shrink');
-                angular.element(element).addClass('ng-reading-indicator-expanded');
-                angular.element(element)[0].style.height = '';
-              }else {
-                angular.element(element)[0].style.height = '0';
-                angular.element(element).addClass('ng-reading-indicator-shrink');
-                angular.element(element).removeClass('ng-reading-indicator-expanded');
-              }
+            if ((!options.expand && options.type === 'small' && scrollPos >= (top + expandOffset.top + options.topOffset)) || (options.expand && scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset))) {
+              angular.element(element)[0].style.height = '5px';
+              angular.element(element).addClass('ng-reading-indicator-shrink');
+              angular.element(element).removeClass('ng-reading-indicator-expanded');
+            } else if (((!options.expand && options.type === 'big') || options.expand) && scrollPos >= (top + expandOffset.top + options.topOffset)) {
+              angular.element(element).removeClass('ng-reading-indicator-shrink');
+              angular.element(element).addClass('ng-reading-indicator-expanded');
+              angular.element(element)[0].style.height = '';
+            } else {
+              angular.element(element)[0].style.height = '0';
+              angular.element(element).addClass('ng-reading-indicator-shrink');
+              angular.element(element).removeClass('ng-reading-indicator-expanded');
             }
           }
 
