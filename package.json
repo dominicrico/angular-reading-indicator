@@ -1,6 +1,6 @@
 {
   "name": "angular-reading-indicator",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "AngularJS Reading Indicator Directive",
   "main": "/src/ng-reading-indicator.js",
   "dependencies": {},
