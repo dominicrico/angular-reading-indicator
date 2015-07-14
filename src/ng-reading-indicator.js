@@ -167,7 +167,7 @@
             if (Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) > 0 || !options.readingTime.seconds) {
               estimate += Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100)));
               estimate += options.readingTime.minutesSuffix;
-            } else if (!Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) > 0 && options.readingTime.seconds) {
+            } else if (Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) === 0 && options.readingTime.seconds) {
               estimate += Math.round((((minutes <= 9 ? minutes + '0' : minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;
               estimate += options.readingTime.secondsSuffix;
             } else {

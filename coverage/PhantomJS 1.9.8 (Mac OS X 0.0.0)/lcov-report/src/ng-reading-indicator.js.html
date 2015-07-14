@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
     <h2>
-        Statements: <span class="metric">32.95% <small>(29 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">18.18% <small>(14 / 77)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">46.67% <small>(7 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">32.95% <small>(29 / 88)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">32.22% <small>(29 / 90)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">16.09% <small>(14 / 87)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">43.75% <small>(7 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">32.22% <small>(29 / 90)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
@@ -217,7 +217,14 @@
 190
 191
 192
-193</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+193
+194
+195
+196
+197
+198
+199
+200</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -245,6 +252,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -307,7 +316,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -346,8 +354,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -377,7 +392,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -453,10 +467,12 @@
                 topOffset: 150,
                 readingTime: {
                   enable: true,
-                  prefix: 'estimate ca. ',
-                  suffix: 'min',
+                  prefix: 'remaining estimate ',
+                  minutesSuffix: 'min',
+                  secondsSuffix: 'sec',
                   speed: 150,
-                  seconds: false
+                  seconds: true,
+                  secondInterval: 5
                 }
               };
 &nbsp;
@@ -499,7 +515,6 @@
                 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                scope.headline = (headline) ? headline : null;</span>
-<span class="cstat-no" title="statement not covered" >                scope.readingTime = (options.readingTime.enable) ? calculateReadingTime() : null;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >                updateSize();</span>
 &nbsp;
@@ -537,10 +552,17 @@
 <span class="cstat-no" title="statement not covered" >              progress = (scrollPos &lt;= top) ? 0 : (((scrollPos-top)+((top + height) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;</span>
             }
 &nbsp;
+<span class="cstat-no" title="statement not covered" >            if (options.readingTime.enable) {</span>
+<span class="cstat-no" title="statement not covered" >              scope.$apply( <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >                scope.readingTime = calculateReadingTime();</span>
+              });
+            } else {
+<span class="cstat-no" title="statement not covered" >              scope.readingTime = null;</span>
+            }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            if (options.expand) {</span>
-<span class="cstat-no" title="statement not covered" >              console.log(scrollPos, top, (expandOffset.top + options.topOffset) );</span>
 <span class="cstat-no" title="statement not covered" >              if (scrollPos &gt; top &amp;&amp; scrollPos &lt; (top + expandOffset.top + options.topOffset)) {</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element)[0].style.height = '5px';</span>
 <span class="cstat-no" title="statement not covered" >                angular.element(element).addClass('ng-reading-indicator-shrink');</span>
@@ -567,15 +589,14 @@
 <span class="cstat-no" title="statement not covered" >              minutes++;</span>
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            estimate += (minutes &lt;= 9 ? '0' : '');</span>
-<span class="cstat-no" title="statement not covered" >            estimate += minutes;</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >            if (options.readingTime.seconds) {</span>
-<span class="cstat-no" title="statement not covered" >              estimate += ':';</span>
-<span class="cstat-no" title="statement not covered" >              estimate += (seconds &lt;= 9 ? '0' : '');</span>
-<span class="cstat-no" title="statement not covered" >              estimate += seconds;</span>
+<span class="cstat-no" title="statement not covered" >            if (Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) &gt; 0 || !options.readingTime.seconds) {</span>
+<span class="cstat-no" title="statement not covered" >              estimate += Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100)));</span>
+<span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.minutesSuffix;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) === 0 &amp;&amp; options.readingTime.seconds) {</span>
+<span class="cstat-no" title="statement not covered" >              estimate += Math.round((((minutes &lt;= 9 ? minutes + '0' : minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;</span>
+<span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.secondsSuffix;</span>
             } else {
-<span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.suffix;</span>
+<span class="cstat-no" title="statement not covered" >              estimate += 0 + options.readingTime.secondsSuffix;</span>
             }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            return estimate;</span>
@@ -606,7 +627,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 13 2015 15:44:43 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 14 2015 10:14:21 GMT+0200 (CEST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
