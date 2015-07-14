@@ -47,9 +47,11 @@ options = {
   readingTime: {
     enable: true, // Show the estimate reading time
     prefix: 'estimate ca. ', // Prefix of estimate
-    suffix: 'min', // Suffix of estimate
+    minutesSuffix: 'min', // suffix for remaining minutes
+    secondsSuffix: 'sec', // suffix for remaining seconds
     speed: 150, // Reading speed in words per minute
-    seconds: false // Display estimate as minutes:seconds ex. 05:22
+    seconds: true, // show remaining seconds else shows just 0min
+    secondInterval: 5 // steps of remaining seconds
   }
 };
 ```
@@ -74,6 +76,12 @@ If you want to display a different text then the headline use the "indicator-hea
 
 ```html
 <ng-reading-indicator indicator-headline="myHeadline"></ng-reading-indicator>
+```
+
+This directive can wait for a scope to load before initializing! Just put in the scope to wait for change and then everything gets build.
+
+```html
+<ng-reading-indicator ndicator-lazy="text"></ng-reading-indicator>
 ```
 
 If you want to use the progress bar just for one special element use the indicator-element-attribute and insert the classname (only the first element with class will be used, will be extendet to id in future release)
