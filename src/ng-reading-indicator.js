@@ -80,8 +80,8 @@
           progressBar = document.getElementsByClassName('ng-reading-indicator-progress')[0];
 
           function initizalize() {
-            if (options.expand || (!options.expand && options.type !== 'small')) {
-              $timeout(function(){
+            $timeout(function(){
+              if (options.expand || (!options.expand && options.type !== 'small')) {
                 if (options.showHeadline && scope.headline) {
                   headline = scope.headline;
                 } else if (options.showHeadline && !scope.headline && article.find('h1').length > 0) {
@@ -92,13 +92,13 @@
                 }
 
                 scope.headline = (headline) ? headline : null;
-              });
-            }
+              }
 
-            updateSize();
+              updateSize();
 
-            angular.element($window).on('scroll', updateProgress);
-            angular.element($window).on('resize', updateSize);
+              angular.element($window).on('scroll', updateProgress);
+              angular.element($window).on('resize', updateSize);
+            });
           }
 
           function findEdges(elem) {
@@ -117,6 +117,7 @@
             top = findEdges(article[0]).top;
             height = findEdges(article[0]).height;
             expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};
+            updateProgress();
           }
 
           function updateProgress() {
@@ -125,7 +126,7 @@
             if (article[0].scrollHeight - window.innerHeight > 0) {
               progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / bottom) * 100;
             } else {
-              progress = (scrollPos <= top) ? 0 : (((scrollPos-top)+((top + height) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;
+              progress = (scrollPos <= top) ? 0 : (((scrollPos-top)+((top + bottom) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;
             }
 
             if (options.readingTime.enable) {
