@@ -9,7 +9,17 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     logLevel: config.LOG_INFO,
-    browsers: ['PhantomJS'],
+    colors: true,
+    singleRun: false,
+    browsers: ['PhantomJS_custom'],
+    customLaunchers: {
+      'PhantomJS_custom': {
+        base: 'PhantomJS',
+        options: {
+          viewportSize: { width: 1024, height: 100 }
+        }
+      },
+    },
     autoWatch: true,
     reporters: ['dots', 'coverage'],
     files: [

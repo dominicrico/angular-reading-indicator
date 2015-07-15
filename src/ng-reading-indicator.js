@@ -18,8 +18,8 @@
         scope: {
           elementClass: '@indicatorElement',
           userOptions: '&indicatorOptions',
-          headline: '=indicatorHeadline',
-          lazy: '=indicatorLazy'
+          headline: '=?indicatorHeadline',
+          lazy: '=?indicatorLazy'
         },
         templateUrl: function (element, attributes) {
           return (attributes.indicatorTemplateUrl || TEMPLATE_URL);
@@ -92,6 +92,8 @@
                 }
 
                 scope.headline = (headline) ? headline : null;
+              } else {
+                scope.headine = null;
               }
 
               updateSize();
