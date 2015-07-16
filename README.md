@@ -40,6 +40,7 @@ Available/Default options:
 
 ```js
 options = {
+calcFrom: 'middle', // "top", "bottom", "middle" - From where of the viewport should we calc the process of reading defaults to "middle"
   showHeadline: true, // Show headline in the progress bar (only works if expand is true or type is "big")
   expand: true, // Show small bar and expand to big after passing the headline
   type: 'small', // Type of bar if expand is "false" available options are "small" or "big"

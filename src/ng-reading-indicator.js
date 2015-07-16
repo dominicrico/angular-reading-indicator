@@ -36,6 +36,7 @@
               expandOffset = null,
               expandOnHeadline = false,
               options = {
+                calcFrom: 'middle',
                 showHeadline: true,
                 expand: true,
                 type: 'small',
@@ -68,6 +69,10 @@
           }
 
           extendDeep(options, scope.userOptions());
+
+          if (options.calcFrom !== 'bottom' && options.calcFrom !== 'top' && options.calcFrom !== 'bottom') {
+            options.calcFrom = 'middle';
+          }
 
           if (!options.expand && options.type !== 'small') {
             angular.element(element).addClass('ng-reading-indicator-expanded');
@@ -124,12 +129,15 @@
 
           function updateProgress() {
             var scrollPos = angular.element($window)[0].scrollY || angular.element($window)[0].pageYOffset;
+            var origScrollPos = scrollPos;
 
-            if (article[0].scrollHeight - window.innerHeight > 0) {
-              progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / bottom) * 100;
-            } else {
-              progress = (scrollPos <= top) ? 0 : (((scrollPos-top)+((top + bottom) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;
+            if (options.calcFrom === 'middle') {
+              scrollPos = origScrollPos + (window.innerHeight / 2);
+            } else if (options.calcFrom === 'bottom') {
+              scrollPos = origScrollPos + window.innerHeight;
             }
+
+            progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / (top-bottom)) * 100;
 
             if (options.readingTime.enable) {
               scope.$apply( function(){
@@ -140,8 +148,6 @@
             }
 
             progressBar.style.width = progress + '%';
-
-            console.log(options, expandOffset.top, options.topOffset);
 
             if ((!options.expand && options.type === 'small' && scrollPos >= (top + expandOffset.top + options.topOffset)) || (options.expand && scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset))) {
               angular.element(element)[0].style.height = '5px';

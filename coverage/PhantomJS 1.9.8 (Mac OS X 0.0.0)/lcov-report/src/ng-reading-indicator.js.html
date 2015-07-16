@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
     <h2>
-        Statements: <span class="metric">35.11% <small>(33 / 94)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">25.29% <small>(22 / 87)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">35.71% <small>(35 / 98)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">28.26% <small>(26 / 92)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">50% <small>(8 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">35.11% <small>(33 / 94)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">35.71% <small>(35 / 98)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
@@ -229,7 +229,13 @@
 202
 203
 204
-205</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+205
+206
+207
+208
+209
+210
+211</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -257,6 +263,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,6 +306,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-yes">1</span>
@@ -355,13 +366,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -369,8 +376,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -471,6 +483,7 @@
               expandOffset = null,
               expandOnHeadline = false,
               options = {
+                calcFrom: 'middle',
                 showHeadline: true,
                 expand: true,
                 type: 'small',
@@ -503,6 +516,10 @@
           }
 &nbsp;
           extendDeep(options, scope.userOptions());
+&nbsp;
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (options.calcFrom !== 'bottom' &amp;&amp; options.calcFrom !== 'top' &amp;&amp; options.calcFrom !== 'bottom') {
+            options.calcFrom = 'middle';
+          }
 &nbsp;
           if (!options.expand &amp;&amp; options.type !== 'small') {
             angular.element(element).addClass('ng-reading-indicator-expanded');
@@ -559,12 +576,15 @@
 &nbsp;
 <span class="fstat-no" title="function not covered" >          function updateProgress() {</span>
 <span class="cstat-no" title="statement not covered" >            var scrollPos = angular.element($window)[0].scrollY || angular.element($window)[0].pageYOffset;</span>
+<span class="cstat-no" title="statement not covered" >            var origScrollPos = scrollPos;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (article[0].scrollHeight - window.innerHeight &gt; 0) {</span>
-<span class="cstat-no" title="statement not covered" >              progress = (scrollPos &lt;= top) ? 0 : ((scrollPos-top) / bottom) * 100;</span>
-            } else {
-<span class="cstat-no" title="statement not covered" >              progress = (scrollPos &lt;= top) ? 0 : (((scrollPos-top)+((top + bottom) - (document.body.offsetHeight - window.innerHeight))) / bottom) * 100;</span>
+<span class="cstat-no" title="statement not covered" >            if (options.calcFrom === 'middle') {</span>
+<span class="cstat-no" title="statement not covered" >              scrollPos = origScrollPos + (window.innerHeight / 2);</span>
+            } else <span class="cstat-no" title="statement not covered" >if (options.calcFrom === 'bottom') {</span>
+<span class="cstat-no" title="statement not covered" >              scrollPos = origScrollPos + window.innerHeight;</span>
             }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            progress = (scrollPos &lt;= top) ? 0 : ((scrollPos-top) / (top-bottom)) * 100;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            if (options.readingTime.enable) {</span>
 <span class="cstat-no" title="statement not covered" >              scope.$apply( <span class="fstat-no" title="function not covered" >function(){</span></span>
@@ -575,8 +595,6 @@
             }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >            console.log(options, expandOffset.top, options.topOffset);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            if ((!options.expand &amp;&amp; options.type === 'small' &amp;&amp; scrollPos &gt;= (top + expandOffset.top + options.topOffset)) || (options.expand &amp;&amp; scrollPos &gt; top &amp;&amp; scrollPos &lt; (top + expandOffset.top + options.topOffset))) {</span>
 <span class="cstat-no" title="statement not covered" >              angular.element(element)[0].style.height = '5px';</span>
@@ -642,7 +660,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 16 2015 10:01:41 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 16 2015 11:55:11 GMT+0200 (CEST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
