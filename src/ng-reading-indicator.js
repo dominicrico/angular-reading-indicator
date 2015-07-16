@@ -137,7 +137,7 @@
               scrollPos = origScrollPos + window.innerHeight;
             }
 
-            progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / (top-bottom)) * 100;
+            progress = (scrollPos <= top) ? 0 : ((scrollPos-top) / (article[0].offsetHeight)) * 100;
 
             if (options.readingTime.enable) {
               scope.$apply( function(){
@@ -149,11 +149,11 @@
 
             progressBar.style.width = progress + '%';
 
-            if ((!options.expand && options.type === 'small' && scrollPos >= (top + expandOffset.top + options.topOffset)) || (options.expand && scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset))) {
+            if ((!options.expand && options.type === 'small' && origScrollPos >= (top + expandOffset.top + options.topOffset)) || (options.expand && origScrollPos > top && origScrollPos < (top + expandOffset.top + options.topOffset))) {
               angular.element(element)[0].style.height = '5px';
               angular.element(element).addClass('ng-reading-indicator-shrink');
               angular.element(element).removeClass('ng-reading-indicator-expanded');
-            } else if (((!options.expand && options.type === 'big') || options.expand) && scrollPos >= (top + expandOffset.top + options.topOffset)) {
+            } else if (((!options.expand && options.type === 'big') || options.expand) && origScrollPos >= (top + expandOffset.top + options.topOffset)) {
               angular.element(element).removeClass('ng-reading-indicator-shrink');
               angular.element(element).addClass('ng-reading-indicator-expanded');
               angular.element(element)[0].style.height = '';
