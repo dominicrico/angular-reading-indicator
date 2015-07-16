@@ -24,8 +24,226 @@
       }
     </style>
   </head>
+  <body class="single-post customize-support ng-scope" ng-app="ngReadingIndicatorApp" ng-controller="ngReadingIndicatorCtrl">
+    <div class="container-fluid animated headroom--not-top slideDown" id="header">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="navbar navbar-default">
+            <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="offcanvas" data-target="#mobile-nav" data-canvas="body" data-placement="left">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navmenu-brand" href="/">
+              <img src="/newsstream/assets/images/png/logo-initiative-mittelstand.png" style="max-width: 150px;">
+            </a>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="hidden-xs"><a href="/about">Über</a></li>
+              <li class="hidden-xs"><a href="/contact">Kontakt</a></li>
+              <li class="hidden-xs"><a href="http://www.trafficgenerator.de" target="_blank"><img src="/newsstream/assets/images/png/trafficgenerator_final_weiss.png" alt="TrafficGenerator" style="max-width: 122px; margin-top: -4px;"></a></li>
+              <li class="hidden-xs"><a href="" target="_blank" ng-click="open()">News abonnieren</a></li>
+              <li class="divider hidden-xs"><a href="" data-toggle="offcanvas" data-target="#sidebar" data-canvas="body" data-placement="right">Kategorien &nbsp;&nbsp;<i class="fa fa-bars"></i></a></li>
+              <li class="visible-xs"><a href="" data-toggle="offcanvas" data-target="#sidebar" data-canvas="body" data-placement="right">Kategorien &nbsp;&nbsp;<i class="fa fa-bars"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <body ng-app="ngReadingIndicatorApp" ng-controller="ngReadingIndicatorCtrl" ng-cloak>
+    <nav id="mobile-nav" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+      <a class="navmenu-brand" href="/">
+        <img src="/newsstream/assets/images/png/logo-initiative-mittelstand.png" style="max-width: 150px;">
+      </a>
+      <ul class="nav navmenu-nav">
+        <li><a href="/about">Über</a></li>
+        <li><a href="/contact">Kontakt</a></li>
+        <li><a href="http://www.trafficgenerator.de" target="_blank">TrafficGenerator</a></li>
+        <li><a href="" target="_blank" ng-click="open()">News abonnieren</a></li>
+      </ul>
+    </nav>
+    <nav id="sidebar" class="navmenu navmenu-default navmenu-fixed-right offcanvas ng-scope" role="navigation">
+      <ul class="nav navmenu-nav">
+        <li class="active"><a href="/">Übersicht</a></li>
+        <li><a href="" ng-click="toggleSubNav($event)" data-subnav-toggle="Industrie &amp; Entwicklung">Industrie &amp; Entwicklung</a><ul class="dropdown-menu nav-list" data-subnav="Industrie &amp; Entwicklung"><li><a class="nav-links" href="/?cat=1">Auto / Verkehr</a></li><li><a class="nav-links" href="/?cat=5">Biotechnik</a></li><li><a class="nav-links" href="/?cat=8">Elektrotechnik</a></li><li><a class="nav-links" href="/?cat=10">Forschung / Entwicklung</a></li><li><a class="nav-links" href="/?cat=15">Intralogistik</a></li><li><a class="nav-links" href="/?cat=18">Luft- / Raumfahrt</a></li><li><a class="nav-links" href="/?cat=19">Maschinenbau</a></li><li><a class="nav-links" href="/?cat=21">Medizintechnik</a></li><li><a class="nav-links" href="/?cat=22">Mikrotechnik</a></li><li><a class="nav-links" href="/?cat=26">Optische Technologien</a></li><li><a class="nav-links" href="/?cat=27">Produktionstechnik</a></li><li><a class="nav-links" href="/?cat=33">Energie / Umwelt / Natur</a></li></ul></li><li><a href="" ng-click="toggleSubNav($event)" data-subnav-toggle="Kultur &amp; Wirtschaft">Kultur &amp; Wirtschaft</a><ul class="dropdown-menu nav-list" data-subnav="Kultur &amp; Wirtschaft"><li><a class="nav-links" href="/?cat=2">Bauen / Wohnen</a></li><li><a class="nav-links" href="/?cat=4">Beruf / Bildung / Jobs</a></li><li><a class="nav-links" href="/?cat=9">Essen / Trinken</a></li><li><a class="nav-links" href="/?cat=11">Geld / Finanzen / Versicherungen</a></li><li><a class="nav-links" href="/?cat=17">Kultur / Gesellschaft</a></li><li><a class="nav-links" href="/?cat=20">Medien / Marketing</a></li><li><a class="nav-links" href="/?cat=34">Verbraucher / Recht</a></li><li><a class="nav-links" href="/?cat=35">Messen / Events</a></li><li><a class="nav-links" href="/?cat=37">Familie / Kind</a></li><li><a class="nav-links" href="/?cat=38">Seminare / Coachings</a></li><li><a class="nav-links" href="/?cat=40">Firmenintern / Kooperationen / Fusionen</a></li></ul></li><li><a href="" ng-click="toggleSubNav($event)" data-subnav-toggle="Lifestyle &amp; Freizeit">Lifestyle &amp; Freizeit</a><ul class="dropdown-menu nav-list" data-subnav="Lifestyle &amp; Freizeit"><li><a class="nav-links" href="/?cat=3">Beauty / Wellness / Gesundheit</a></li><li><a class="nav-links" href="/?cat=23">Mode / Fashion</a></li><li><a class="nav-links" href="/?cat=24">Musik</a></li><li><a class="nav-links" href="/?cat=28">Reise / Touristik</a></li><li><a class="nav-links" href="/?cat=29">Schmuck / Accessoires</a></li><li><a class="nav-links" href="/?cat=32">Sport</a></li><li><a class="nav-links" href="/?cat=39">Freizeit / Hobby</a></li></ul></li><li><a href="" ng-click="toggleSubNav($event)" data-subnav-toggle="Telekommunikation &amp; IT">Telekommunikation &amp; IT</a><ul class="dropdown-menu nav-list" data-subnav="Telekommunikation &amp; IT"><li><a class="nav-links" href="/?cat=6">Consumer Electronics</a></li><li><a class="nav-links" href="/?cat=7">E-Commerce</a></li><li><a class="nav-links" href="/?cat=12">Hardware</a></li><li><a class="nav-links" href="/?cat=13">Home Entertainment</a></li><li><a class="nav-links" href="/?cat=14">Internet</a></li><li><a class="nav-links" href="/?cat=16">Kommunikation</a></li><li><a class="nav-links" href="/?cat=25">Netzwerke</a></li><li><a class="nav-links" href="/?cat=30">Sicherheit</a></li><li><a class="nav-links" href="/?cat=31">Software</a></li><li><a class="nav-links" href="/?cat=36">Logistik</a></li></ul></li>            </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <section id="news-entry" class="main-container ng-scope">
+      <ng-reading-indicator indicator-lazy="article.text" indicator-element=".entry" indicator-options="options" class="ng-isolate-scope ng-reading-indicator-expanded" style=""><div class="ng-reading-indicator-progress" style="width: 18.2203389830508%;"></div><div class="ng-reading-indicator-headline"><h2 ng-bind-html="headline" class="ng-binding"></h2></div><!-- ngIf: readingTime --><div class="ng-reading-indicator-time ng-binding ng-scope" ng-if="readingTime"> remaining estimate 49min</div><!-- end ngIf: readingTime --></ng-reading-indicator>
+      <div class="container-fluid header-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3 ">
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2 text-center item-teaser-wrapper">
+                    <div class="item-teaser">
+                      <p class="text-uppercase ng-binding">
+                        Institut für Demographie, Allgemeinwohl und Familie e.V
+                      </p>
+                      <h2 class="text-light ng-binding">Demnächst die Wochenkrippe im real existierenden Kapitalismus?</h2>
+                      <p class="ng-binding">Familie / Kind - 15.07.2015 14:00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <a name="article"></a>
+        <div id="sticky-anchor"></div>
+        <div sticky="" id="sticky" class="hidden-xs col-sm-2 col-sm-offset-10 stick" style="margin-left: 995px;">
+          <img class="img-responsive" style="max-width: 170px;" ng-src="//cdn.trafficgenerator.de/r/35b3ae4bb145065a/companylogos/6/1/7/0001716_original.image" src="//cdn.trafficgenerator.de/r/35b3ae4bb145065a/companylogos/6/1/7/0001716_original.image">
+          <strong class="ng-binding">Institut für Demographie, Allgemeinwohl und Familie e.V</strong><br><br>
+          <a ng-href="/firma/institut-fuer-demographie-allgemeinwohl-und-familie-ev/f82c4b/1716" href="/firma/institut-fuer-demographie-allgemeinwohl-und-familie-ev/f82c4b/1716"><i class="icon-newspaper"></i>&nbsp;&nbsp; Zum Newsroom &nbsp;&nbsp;<i class="fa fa-chevron-right"></i></a>
+          <a class="share-btn fb" target="_blank" ng-href="https://www.facebook.com/sharer/sharer.php?u=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467" href="https://www.facebook.com/sharer/sharer.php?u=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467">
+            <i class="fa fa-facebook"></i> Teilen
+          </a>
+          <a class="share-btn tw" target="_blank" ng-href="https://twitter.com/home?status=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467" href="https://twitter.com/home?status=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467">
+            <i class="fa fa-twitter"></i> Teilen
+          </a>
+          <a class="share-btn li" target="_blank" ng-href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://news.imittelstand.de/news/demnaechst-die-wochenkrippe-im-real-existierenden-kapitalismus/7dad62/2467">
+            <i class="fa fa-linkedin"></i> Teilen
+          </a>
+        </div>
+        <div class="row">
+          <div class="visible-xs col-xs-12 text-center" style="margin-top: 20px;">
+            <strong class="ng-binding">Institut für Demographie, Allgemeinwohl und Familie e.V</strong> &nbsp;&nbsp;<a ng-href="/firma/institut-fuer-demographie-allgemeinwohl-und-familie-ev/f82c4b/1716" href="/firma/institut-fuer-demographie-allgemeinwohl-und-familie-ev/f82c4b/1716"><i class="icon-newspaper"></i>&nbsp;&nbsp; Zum Newsroom &nbsp;&nbsp;<i class="fa fa-chevron-right"></i></a>
+          </div>
+        </div>
+        <div class="row" ng-show="!loading.company">
+          <div class="col-sm-8 col-sm-offset-2 col-xs-12 entry-content">
+            <div class="entry">
+              <!-- ngIf: (images.length > 0) && (images[0].type == 1) --><a ng-if="(images.length > 0) &amp;&amp; (images[0].type == 1)" ng-href="//cdn.trafficgenerator.de/r/cf96108c872faddb/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg" rel="lightbox" class="ng-scope" href="//cdn.trafficgenerator.de/r/cf96108c872faddb/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg">
+              <img ng-src="//cdn.trafficgenerator.de/r/c45c3439bd3e2b67/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg.640x480.thumb" align="left" class="img-text" src="//cdn.trafficgenerator.de/r/c45c3439bd3e2b67/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg.640x480.thumb">
+              </a><!-- end ngIf: (images.length > 0) && (images[0].type == 1) -->
+              <!-- ngIf: (images.length > 0) && (images[0].type == 4) -->
+              <div class="article-text"><h1>Demnächst die Wochenkrippe im real existierenden Kapitalismus?</h1><p>&nbsp;Soll es jetzt 24-Stunden-Krippen, Tag-und-Nacht-Depots für Kinder geben? Die Advokaten dieser Rund-um-die-Uhr-Betreuung, Arbeitgeber und Bundesfamilienministerin, bestreiten das: Solche Krippen sollen keine Verwahranstalten sein, sondern Eltern, die im Schichtdienst, in Tagesrandzeiten oder an Wochenenden arbeiten, "flexible" Betreuungsangebote bieten [1]. Gerade Frauen müssten ja oft zu solchen Zeiten erwerbstätig sein, etwa Krankenschwestern oder Verkäuferinnen. Das fordern Kommerz und Konsum, prototypisch dafür sind die stetig verlängerten Ladenöffnungszeiten. Eine 24-Stunden/7-Tage-Ökonomie gibt den Takt vor; Kapitalinteressen haben Vorrang vor Familienleben. Politik und Wirtschaft weisen den Vorwurf, nur betriebsfreundliche Familien zu wollen, weit von sich: "Familienfreundliche" Arbeitszeiten lautet ihre Sprachregelung.<br><br> Die Familienministerin propagiert eine 32-Stunden-Woche für Mütter wie Väter. Dass ein solches Modell als "familienfreundlich" verkauft werden kann, lässt sich eigentlich nur durch eine Art Amnesie, einen Verlust des Gedächtnisses, erklären. Ältere Mitbürger haben noch erlebt, wie um 1960 die Arbeitswoche von 48 auf 40 Stunden verkürzt wurde, dafür haben die Gewerkschaften gekämpft ("Samstags gehört Papa mir"). Das damalige Leitbild war der Familienlohn: Der (männliche) Facharbeiter sollte mit dem Lohn für 40 (bzw. zuvor 48) Arbeitsstunden eine vierköpfige Familie unterhalten können. Davon können Eltern im Schwesig-Modell nur träumen, denn sie sollen 32x 2=64 Stunden für den Unterhalt arbeiten [2]. Zu bezahlen haben die Eltern nicht zuletzt für die externe Kinderbetreuung, ob sie dafür Gebühren entrichten oder als Steuerzahler (mit)aufkommen, ist dabei letztlich zweitrangig.<br><br> Um diesen Aufwand zu rechtfertigen, müssen die Eltern glauben, dass ihre Kinder von Vater Staat besser erzogen werden als im Elternhaus. Als Vorbilder firmieren die nordischen Wohlfahrtsstaaten; ernüchternde, zumindest ambivalente Erfahrungen mit der dortigen Betreuungspolitik werden ausgeblendet, nicht zuletzt betrifft das die mäßigen PISA-Ergebnisse in Dänemark oder Schweden. Den Glauben an die "frühkindliche Bildung" widerlegt eigentlich schon der innerdeutsche Vergleich: Während in Ostdeutschland mehr als die Hälfte der unterdreijährigen Kinder Krippen besucht, gibt es in Westdeutschland Regionen, in denen, trotz des massiven Krippenausbaus der letzten Dekade, noch immer weniger als ein Fünftel der Kleinkinder institutionell betreut wird [3]. Noch deutlicher zeigen sich die systemischen Differenzen in der Ganztagsbetreuung: In manchen ostdeutschen Regionen wird ca. die Hälfte der unterdreijährigen Kinder ganztägig betreut, in Westniedersachsen oder Südostbayern liegt dieser Anteil unter 5%; generell sind solche langen Betreuungszeiten in den ländlichen Regionen Westdeutschlands die Ausnahme [4]. Sind Kinder und Jugendliche aus dem Allgäu, Niederbayern oder dem Emsland schlechter (aus)gebildet und weniger erfolgreich als junge Menschen aus Jena, Gera, dem Jerichower oder Altenburger Land? Davon ist nichts bekannt, angesichts der relativ guten Bildungsergebnisse in Süddeutschland könnte man eher das Gegenteil behaupten. Advokaten der Krippenbetreuung hindert das nicht, diese westdeutschen Regionen als "rückständig" zu disqualifizieren. Sie werden nicht müde, den (West)Deutschen einzureden, dass sie in einem falschen Leitbild eigenverantwortlicher Elternschaft, gar einem "Müttermythos", befangen und ihre Skepsis gegenüber (ganztägiger) Fremdbetreuung gänzlich unbegründet sei [5]. Schlechte Erfahrungen mit der Kollektivbetreuung werden bagatellisiert; stereotyp wird auf die Qualität verwiesen, die angeblich verbessert würde [6].<br><br> Selbst wenn dies zuträfe: Qualität ist nicht umsonst zu haben, sondern teuer. Folgerichtig müssen die Eltern noch mehr arbeiten, um die angeblich bessere Kinderbetreuung bezahlen zu können. Am besten wäre dafür eine Betreuung nicht nur rund um die Uhr, sondern auch rund um die Woche. Solche Wochenkrippen gab es zwar schon im Sozialismus, aber in der Welt des Konsumkapitalismus sollen sie viel besser, viel kinderfreundlicher sein. Warum das so sein soll, müsste eine Qualitätsdebatte über Krippen zeigen. Aber diese Debatte findet nicht statt. Dagegen gibt es Behauptungen - und Streiks jetzt schon überforderter Erzieherinnen.<br><br><em>[1] Das forderte die Bundesregierung schon in ihrer Stellungnahme zum Achten Familienbericht. Eingehender hierzu: Stefan Fuchs: Gesellschaft ohne Kinder, Wiesbaden 2014, S. 360 ff. Lesenswert zur aktuellen Diskussion: Jan Grossarth: Kindheit nach Stundenplan, FAZ vom 11.7.2015, <a class="bbcode_url" href="/redir?tu=http%3A%2F%2Fwww.lifepr.de%2Fredirect%2Fext%3Ftu%3Dhttp%253A%252F%252Fwww.faz.net%252Faktuell%252Fwirtschaft%252Fausbau-der-grundschulen-kindheit-nach-stundenplan-13696147.html%26amp%3Brp%3DoSGaL5omNC2PSPP64FY%252F5KdV1qYok4uTMUQ9p1CHLQI%253D&amp;rp=c97H9Opu%2FGUodY3ACtjdtQ%3D%3D" target="_blank">http://www.faz.net/aktuell/wirtschaft/ausbau-der-grundschulen-kindheit-nach-stundenplan-13696147.html</a>.<br><br> [2] Eingehender hierzu: Stefan Fuchs: Vater Staat statt Elternhaus, S. 130-142, in: Die Neue Ordnung, Heft 2/2014, S. 131-133.<br><br> [3] Vgl.: U3-Betreuung in Deutschland (Abbildung). Zu beachten ist, dass der Durchschnittswert die großen Differenzen nach Altersgruppen verdeckt: Während Säuglinge kaum institutionell betreut werden, besucht schon mehr als die Hälfte der 2-3jährigen Kinder eine Einrichtung. Eingehender hierzu: Nachricht der Woche, 2015/12: <a class="bbcode_url" href="/redir?tu=http%3A%2F%2Fwww.lifepr.de%2Fredirect%2Fext%3Ftu%3Dhttp%253A%252F%252Fwww.i-daf.org%252Faktuelles%252Faktuelles-einzelansicht%252Farchiv%252F2015%252F06%252F22%252Fartikel%252Fder-preis-des-digitalen-kapitalismus-immer-spaetere-elternschaft-und-damit-immer-weniger-kind.html%26amp%3Brp%3DoSGaL5omNC2PSPP64FY%252F5Cv0l85SdaauSLYidWKGDvo%253D&amp;rp=wtBOeBexe%2Fxmim3BWsZ1Sw%3D%3D" target="_blank">http://www.i-daf.org/aktuelles/aktuelles-einzelansicht/archiv/2015/06/22/artikel/der-preis-des-digitalen-kapitalismus-immer-spaetere-elternschaft-und-damit-immer-weniger-kind.html</a>.<br><br> [4] Vgl.: U3-Ganztagsbetreuung in Deutschland (Abbildung).<br><br> [5] In zahlreichen Veröffentlichungen, nicht zuletzt auch der Bundesregierung, wurde und wird die vermeintlich "rückständige" Kinderbetreuungspolitik Westdeutschlands der fortschrittlicheren Politik der ehemaligen DDR gegenüber gestellt. Vgl.: Stefan Fuchs: Gesellschaft ohne Kinder, a.a.O., S. 82 ff.<br><br> [6] Auf diese Weise werden negative Erfahrungen mit der Kollektiverziehung in realsozialistischen Ländern für irrelevant erklärt. Sicherlich herrschten dort andere Bedingungen, nicht zuletzt war die Erziehungspolitik stark ideologisiert. Aber dennoch könnten diese Erfahrungen lehrreich sein, ein besonders interessanter Fall ist hier die Tschechische Republik, die kinderbetreuungspolitisch einen anderen Weg gegangen ist als die DDR. Das in den 1950er Jahren aufgebaut Krippensystem ist dort fast völlig verschwunden, was "progressive" Autoren stark kritisieren. Charakteristisch für diese Sicht: Steven Saxonberg/Hana Haskova/Jiri Mudrak: The Development of Czech Childcare Policies, Prag 2012, insbesondere S. 39-40.</em>&nbsp;</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- ngIf: images.length > 0 --><div class="row ng-scope" ng-if="images.length > 0">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12 content-box">
+          <small class="text-uppercase text-muted"><strong>Bilder &amp; Videos</strong></small>
+          <div class="flexslider-container" slide="img in images track by $index" animation="slide" item-margin="20" item-width="210" max-items="3"><div class="flexslider"><div class="flex-viewport" style="overflow: hidden; position: relative;"><ul class="slides" style="width: 400%; -webkit-transition-duration: 0s; transition-duration: 0s; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);">
+            <!-- ngIf: img.type == 1 --><li ng-if="img.type == 1" class="ng-scope" style="width: 230.666666666667px; float: left; display: block;">
+            <a ng-href="//cdn.trafficgenerator.de/r/cf96108c872faddb/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg" rel="lightbox" href="//cdn.trafficgenerator.de/r/cf96108c872faddb/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg">
+              <img ng-src="//cdn.trafficgenerator.de/r/c45c3439bd3e2b67/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg.640x480.thumb" src="//cdn.trafficgenerator.de/r/c45c3439bd3e2b67/mediafile/00/00/63/00006341/csm_u3_Betreuung_in_D_d66be4bfd2.jpg.640x480.thumb" draggable="false">
+            </a>
+            </li><!-- end ngIf: img.type == 1 -->
+            <!-- ngIf: img.type == 4 -->
+
+            <!-- ngIf: img.type == 1 --><li ng-if="img.type == 1" class="ng-scope" style="width: 230.666666666667px; float: left; display: block;">
+            <a ng-href="//cdn.trafficgenerator.de/r/5cb60d2084e3c37d/mediafile/00/00/63/00006342/csm_u3_Ganztagsbetreuung_in_D_0286717c97.jpg" rel="lightbox" href="//cdn.trafficgenerator.de/r/5cb60d2084e3c37d/mediafile/00/00/63/00006342/csm_u3_Ganztagsbetreuung_in_D_0286717c97.jpg">
+              <img ng-src="//cdn.trafficgenerator.de/r/b191126265ec1941/mediafile/00/00/63/00006342/csm_u3_Ganztagsbetreuung_in_D_0286717c97.jpg.640x480.thumb" src="//cdn.trafficgenerator.de/r/b191126265ec1941/mediafile/00/00/63/00006342/csm_u3_Ganztagsbetreuung_in_D_0286717c97.jpg.640x480.thumb" draggable="false">
+            </a>
+            </li><!-- end ngIf: img.type == 1 -->
+            <!-- ngIf: img.type == 4 -->
+            </ul></div><ol class="flex-control-nav flex-control-paging"></ol><ul class="flex-direction-nav"><li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a></li><li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a></li></ul></div></div>
+          <!-- ngRepeat: img in images --><!-- ngIf: images && $last --><!-- end ngRepeat: img in images --><!-- ngIf: images && $last --><span ng-repeat="img in images" ng-if="images &amp;&amp; $last" after-render="" class="ng-scope"></span><!-- end ngIf: images && $last --><!-- end ngRepeat: img in images -->
+        </div>
+        </div><!-- end ngIf: images.length > 0 -->
+        <!-- ngIf: attachments.length > 0 --><div class="row ng-scope" ng-if="attachments.length > 0">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12 content-box">
+          <small class="text-uppercase text-muted"><strong>Dokumente</strong></small>
+          <ul class="attachment-list">
+            <!-- ngRepeat: file in attachments --><li ng-repeat="file in attachments" class="ng-scope">
+            <span class="ng-binding"><strong class="text-uppercase ng-binding"></strong> -  <small class="text-muted ng-binding"> </small></span> <a href="" target="_blank" class="btn btn-danger pull-right">Download</a>
+            </li><!-- end ngRepeat: file in attachments -->
+          </ul>
+
+        </div>
+        </div><!-- end ngIf: attachments.length > 0 -->
+        <!-- ngIf: contacts.length > 0 -->
+        <div class="row" ng-show="!loading.company">
+          <div class="col-sm-8 col-sm-offset-2 col-xs-12 content-box">
+            <div class="row row-company">
+              <div class="col-xs-12 col-sm-6">
+                <small class="text-uppercase text-muted"><strong class="ng-binding">Über Institut für Demographie, Allgemeinwohl und Familie e.V</strong></small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-2">
+                <span class="squared img-circle">
+                  <!-- ngIf: company.logo --><img ng-if="company.logo" ng-src="//cdn.trafficgenerator.de/r/35b3ae4bb145065a/companylogos/6/1/7/0001716_original.image" class="img-responsive img-center ng-scope" src="//cdn.trafficgenerator.de/r/35b3ae4bb145065a/companylogos/6/1/7/0001716_original.image"><!-- end ngIf: company.logo -->
+                  <!-- ngIf: !company.logo -->
+                </span>
+              </div>
+              <div class="col-xs-12 col-sm-10">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 company-details ng-binding">
+                    <strong class="ng-binding">Institut für Demographie, Allgemeinwohl und Familie e.V</strong><br>
+                    Neckarstr. 13<br>
+                    53757
+                    Sankt Augustin
+                  </div>
+                  <div class="col-xs-12 col-sm-6 company-details">
+                    <small class="text-uppercase text-muted"><strong>Im web</strong></small><br>
+                    <div>
+                      <a ng-href="/redir?tu=http%3A%2F%2Fwww.i-daf.org&amp;rp=fCz2TB8MfKs%2BFT3zcFBTow%3D%3D" target="_blank" class="ng-binding" href="/redir?tu=http%3A%2F%2Fwww.i-daf.org&amp;rp=fCz2TB8MfKs%2BFT3zcFBTow%3D%3D">
+                        <i class="fa fa-globe"></i> http://www.i-daf.org
+                      </a>
+                    </div>
+                    <!-- ngRepeat: (key, social) in company.social_media -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="company-desc ng-binding">
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row disclaimer-row">
+          <div class="col-sm-8 col-sm-offset-2 col-xs-12 ">
+            <small>
+              <em class="text-muted">
+                Disclaimer:<br>
+                Für den oben stehenden Beitrag sowie für das angezeigte Bild- und Tonmaterial ist allein der jeweils angegebene Autor verantwortlich. Eine inhaltliche Kontrolle des Beitrags seitens der Seitenbetreiberin erfolgt weder vor noch nach der Veröffentlichung. Die Seitenbetreiberin macht sich den Inhalt insbesondere nicht zu eigen.
+              </em>
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <!-- ngIf: show -->
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- END Page Content -->
+    <footer>
+      <div class="container-fluid footer-container">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="/">InitiativeMittelstand</a>
+          </div>
+          <div class="col-xs-6 text-right">
+            <ul class="list-inline">
+              <li><a href="http://www.huberverlag.de/kontakt/datenschutz.html">Datenschutzbestimmungen</a></li>
+              <li><a href="http://www.huberverlag.de/kontakt/impressum.html" target="_blank">Impressum</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <div id="lightbox-18014" class="lightbox" style="display:none;"><a href="#" class="lightbox-close lightbox-button"></a><div class="lightbox-nav"><a href="#" class="lightbox-previous lightbox-button"></a><a href="#" class="lightbox-next lightbox-button"></a></div><div href="#" class="lightbox-caption"><p></p></div></div></body>
+<!--  <body ng-app="ngReadingIndicatorApp" ng-controller="ngReadingIndicatorCtrl" ng-cloak>
     <div class="main">
       <ng-reading-indicator indicator-options="options" indicator-lazy="text" indicator-element=".article" indicator-options="options"></ng-reading-indicator>
       <article>
@@ -38,7 +256,7 @@
         {{ text }}
       </article>
     </div>
-  </body>
+  </body> -->
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-sanitize.min.js"></script>

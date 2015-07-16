@@ -118,7 +118,7 @@
             bottom = findEdges(article[0]).bottom;
             top = findEdges(article[0]).top;
             height = findEdges(article[0]).height;
-            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};
+            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 0};
             updateProgress();
           }
 
@@ -140,6 +140,9 @@
             }
 
             progressBar.style.width = progress + '%';
+
+            console.log(options, expandOffset.top, options.topOffset);
+
             if ((!options.expand && options.type === 'small' && scrollPos >= (top + expandOffset.top + options.topOffset)) || (options.expand && scrollPos > top && scrollPos < (top + expandOffset.top + options.topOffset))) {
               angular.element(element)[0].style.height = '5px';
               angular.element(element).addClass('ng-reading-indicator-shrink');
@@ -156,20 +159,21 @@
           }
 
           function calculateReadingTime(){
-            var wordCount = article.text().split(' ').length;
+            var wordCount = angular.element(article[0]).text().trim().split(' ').length;
             var minutes = Math.floor(wordCount / options.readingTime.speed);
             var seconds = Math.floor(wordCount % options.readingTime.speed / (options.readingTime.speed / 60));
             var estimate = 	options.readingTime.prefix;
 
-            if (!options.readingTime.seconds && seconds >= 30) {
+            if (seconds >= 30) {
               minutes++;
             }
 
-            if (Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) > 0 || !options.readingTime.seconds) {
-              estimate += Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100)));
+            if (Math.floor(minutes * (1 - (progress/100))) > 0 || !options.readingTime.seconds) {
+              minutes = minutes * (1 - (progress/100));
+              estimate += Math.floor(minutes);
               estimate += options.readingTime.minutesSuffix;
-            } else if (Math.floor((minutes <= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) === 0 && options.readingTime.seconds) {
-              estimate += Math.round((((minutes <= 9 ? minutes + '0' : minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;
+            } else if (Math.floor(minutes * (1 - (progress/100))) === 0 && options.readingTime.seconds) {
+              estimate += Math.round((((minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;
               estimate += options.readingTime.secondsSuffix;
             } else {
               estimate += 0 + options.readingTime.secondsSuffix;

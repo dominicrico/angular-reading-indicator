@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">src/ng-reading-indicator.js</span></h1>
     <h2>
-        Statements: <span class="metric">35.87% <small>(33 / 92)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">22.68% <small>(22 / 97)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">35.11% <small>(33 / 94)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">25.29% <small>(22 / 87)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">50% <small>(8 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">35.87% <small>(33 / 92)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">35.11% <small>(33 / 94)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; ng-reading-indicator.js</div>
@@ -225,7 +225,11 @@
 198
 199
 200
-201</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+201
+202
+203
+204
+205</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -367,6 +371,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -392,6 +399,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -545,7 +553,7 @@
 <span class="cstat-no" title="statement not covered" >            bottom = findEdges(article[0]).bottom;</span>
 <span class="cstat-no" title="statement not covered" >            top = findEdges(article[0]).top;</span>
 <span class="cstat-no" title="statement not covered" >            height = findEdges(article[0]).height;</span>
-<span class="cstat-no" title="statement not covered" >            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 50};</span>
+<span class="cstat-no" title="statement not covered" >            expandOffset = (expandOnHeadline) ? findEdges(article.find('h1')[0]) : {top: 0};</span>
 <span class="cstat-no" title="statement not covered" >            updateProgress();</span>
           }
 &nbsp;
@@ -567,6 +575,9 @@
             }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            progressBar.style.width = progress + '%';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            console.log(options, expandOffset.top, options.topOffset);</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >            if ((!options.expand &amp;&amp; options.type === 'small' &amp;&amp; scrollPos &gt;= (top + expandOffset.top + options.topOffset)) || (options.expand &amp;&amp; scrollPos &gt; top &amp;&amp; scrollPos &lt; (top + expandOffset.top + options.topOffset))) {</span>
 <span class="cstat-no" title="statement not covered" >              angular.element(element)[0].style.height = '5px';</span>
 <span class="cstat-no" title="statement not covered" >              angular.element(element).addClass('ng-reading-indicator-shrink');</span>
@@ -583,20 +594,21 @@
           }
 &nbsp;
 <span class="fstat-no" title="function not covered" >          function calculateReadingTime(){</span>
-<span class="cstat-no" title="statement not covered" >            var wordCount = article.text().split(' ').length;</span>
+<span class="cstat-no" title="statement not covered" >            var wordCount = angular.element(article[0]).text().trim().split(' ').length;</span>
 <span class="cstat-no" title="statement not covered" >            var minutes = Math.floor(wordCount / options.readingTime.speed);</span>
 <span class="cstat-no" title="statement not covered" >            var seconds = Math.floor(wordCount % options.readingTime.speed / (options.readingTime.speed / 60));</span>
 <span class="cstat-no" title="statement not covered" >            var estimate = 	options.readingTime.prefix;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (!options.readingTime.seconds &amp;&amp; seconds &gt;= 30) {</span>
+<span class="cstat-no" title="statement not covered" >            if (seconds &gt;= 30) {</span>
 <span class="cstat-no" title="statement not covered" >              minutes++;</span>
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) &gt; 0 || !options.readingTime.seconds) {</span>
-<span class="cstat-no" title="statement not covered" >              estimate += Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100)));</span>
+<span class="cstat-no" title="statement not covered" >            if (Math.floor(minutes * (1 - (progress/100))) &gt; 0 || !options.readingTime.seconds) {</span>
+<span class="cstat-no" title="statement not covered" >              minutes = minutes * (1 - (progress/100));</span>
+<span class="cstat-no" title="statement not covered" >              estimate += Math.floor(minutes);</span>
 <span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.minutesSuffix;</span>
-            } else <span class="cstat-no" title="statement not covered" >if (Math.floor((minutes &lt;= 9 ? minutes + '0' : minutes) * (1 - (progress/100))) === 0 &amp;&amp; options.readingTime.seconds) {</span>
-<span class="cstat-no" title="statement not covered" >              estimate += Math.round((((minutes &lt;= 9 ? minutes + '0' : minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;</span>
+            } else <span class="cstat-no" title="statement not covered" >if (Math.floor(minutes * (1 - (progress/100))) === 0 &amp;&amp; options.readingTime.seconds) {</span>
+<span class="cstat-no" title="statement not covered" >              estimate += Math.round((((minutes)*60) * (1 - (progress/100))) / 10) * options.readingTime.secondInterval;</span>
 <span class="cstat-no" title="statement not covered" >              estimate += options.readingTime.secondsSuffix;</span>
             } else {
 <span class="cstat-no" title="statement not covered" >              estimate += 0 + options.readingTime.secondsSuffix;</span>
@@ -630,7 +642,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 15 2015 11:23:45 GMT+0200 (CEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 16 2015 10:01:41 GMT+0200 (CEST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>
