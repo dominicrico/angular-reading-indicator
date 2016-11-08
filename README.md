@@ -3,7 +3,7 @@ angular-reading-indicator
 
 AngularJS directive which shows a progress bar with the current reading progress of a given article or the whole website with a reading time estimate.
 
-Copyright (C) 2015, Dominic Rico-Gomez <hello@coderocket.me>
+Copyright (C) 2015 - 2016, Dominic Rico-Gomez <hello@coderocket.me>
 
 [![Build Status](https://travis-ci.org/dominicrico/angular-reading-indicator.png?branch=master)](https://travis-ci.org/dominicrico/angular-reading-indicator)
 [![Coverage Status](https://coveralls.io/repos/dominicrico/angular-reading-indicator/badge.png)](https://coveralls.io/r/dominicrico/angular-reading-indicator)
